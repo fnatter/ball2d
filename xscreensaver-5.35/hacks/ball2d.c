@@ -98,7 +98,6 @@ typedef struct _Ball {
 struct state {
     Display *dpy;
     Window window;
-
     long iteration_number;
     time_t startTime;
     time_t lastZombieTime;
@@ -2286,10 +2285,10 @@ ball2d_init (Display *dpy, Window window)
     }
     else
     {
-        make_random_colormap (st->dpy, st->xgwa.visual, st->xgwa.colormap,
+        make_random_colormap (st->xgwa.screen, st->xgwa.visual, st->xgwa.colormap,
                               st->colors, &st->ncolors, True, True, 0, True);
         /*
-          make_smooth_colormap (st->dpy, st->xgwa.visual, st->xgwa.colormap,
+          make_smooth_colormap (st->xgwa.screen, st->xgwa.visual, st->xgwa.colormap,
           st->colors, &st->ncolors, True, 0, True);
         */
         if (st->ncolors < 2)
@@ -2617,7 +2616,7 @@ ball2d_free (Display *dpy, Window window, void *closure)
 
     if (st->startAngles != NULL)
         free(st->startAngles);
-    free_colors(st->dpy, st->xgwa.colormap, st->colors, st->ncolors);
+    free_colors(st->xgwa.screen, st->xgwa.colormap, st->colors, st->ncolors);
     for (i = 0; i < st->count; i++)
     {
         XFreeGC(st->dpy, st->balls[i].gc);
