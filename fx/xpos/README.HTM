@@ -1,0 +1,126 @@
+<HTML>
+<head>
+<title>Xposition 0.?</title>
+</head>
+
+<table bgcolor = "red">
+<tr>
+<td>If you are running Windows, please start this program only in <b>fullscreen-mode</b>
+(Alt+Enter at the DOS-Prompt).</td>
+</tr>
+</table>
+
+<p>
+this program runs in 32bit protected mode with a DPMI handler (CWSPMI, see CWSDPMI.DOC),
+but since there are lots of bugs in it, you should really start in (extended)
+DOS - it sometimes crashes, gives you some nice GPF's and page faults and so on...
+<br>
+Xposition is a simple 3D-system I've put together. It includes utilities, meshes
+and textures. Some textures are taken from <a href = "http://www.meat.com/textures">Texture Land</a>
+and meshes are from everywhere. I think (hope) that I don't have to put copyrights out here
+for the meshes, because mainly these are popular meshes you could create yourself.
+Besides, everyone does it ;-). Stealing meshes, that is. I've also
+read some tutorials on the web, books and in some (few) places I've used source code
+(I put notes in the sources together with by whom these are). I didn't
+take sources from any 3d-engine, just some functions from books or tutorials;
+like the 2D-line-clipping-code, for example.
+</p>
+
+<p>
+There is also a utility (asc2rd.exe) that I took from the Chaos engine
+(as well as some meshes).<br>
+it's written by <a href = "mailto:lars_and@algonet.se">Lars Andersson</a>
+I put it in here with his permission.
+His homepage is at <a href = "http://www.algonet.se/~lars_and/index.html">
+http://www.algonet.se/~lars_and/index.html</a>.
+</p>
+
+<h2>Installation</h2>
+<p>
+If you've got the binary version, just run <code>install.bat</code>
+from the DOS prompt. This will compile all the meshes to be ready for
+you to use. If the program runs too slow, you'd best download the
+sources and modify the sources so that pushing 'forward',
+'backward' etc. will advance you further; look for the function
+'immer_der_Nase_nach' (german for go straight on), and increase
+its argument.<br>
+If you downloaded the source, and you haven't already compiled (
+using fx/Makefile), you should do so now (or, if you only want
+to compile xpos, uncomment #RELEASE in ./Makefile and type <code>make</code>).<br>
+Then, read the manual, and run <code>xpos [file.wld]</code>
+to view a world.
+</p>
+
+<h2>(short!) Manual</h2>
+
+<ul>
+<li>cwsdpmi is the dpmi host, you need it for any of the programs to run
+<li>you need a VesaBiosExtension (VBE) 2.0 because I use LFB
+<li>xpos.cfg
+      <ul>
+      <li>some general configurations:
+      <li><em>res: <xres> <yres></em> specifies resolution of video mode,
+       use any 8bit mode your VBE supports with LFB
+      <li><em>hsr: "yes" / "no"</em> enables/disables hidden surface removal, can be overridden when running xpos (press H)
+      <li><em>lightsource_dragging: "yes" / "no"</em> enables/disables lightsource dragging, can be overridden when running xpos (press D) 
+      <li><em>autosave_the_.wld: "yes" / "no"</em> enables/disables autosaving world-configuration to .wld-file; if this is not set, you can manually save by pressing 'W'
+      <li><em>shading_palette: <filename.pal></em> specifies the shading palette (16x16); shadecos.pal and shadelin.pal are available
+      </ul>
+<li><a name = "sprites">sprites:</a>
+<p>
+Sprites are 8bit-bitmaps consisting of a 768 (3*256)-byte palette (6bit/vga!)
+followed by 2 bytes width, 2 bytes height (little-endian), followed by (width * height)
+bytes image data. If you want to use your own textures, you can use
+<a href = "http://www.ndh.net/home/natter/programs.htm#makebm">Makebm</a>, or write your
+own conversion program (it's not hard). XPos only reads sprites, as this is
+most convenient (I don't have to check for the type of DIB, uncompress, etc.).
+</p>
+<li><a name = "somfiles">.SOM files</a>:
+<p>
+These are simple object files, compile with som2xyz to <a href = "xyz">.xyz files</a>
+som's are made up of:<br>
+number_of_Vertices, number_of_Faces, number_of_Textures  (i.e.: 100 300 1)<br>
+list of filenames of textures (only <a href="#sprites">sprites</a> supported!) i.e: PAT1.SPR<br>
+list of vertices (x     y     z) i.e.: 10.000000 -6.500000 1.000000<br>
+list of faces:<br>
+"nVerts:", exactly nVerts VerticeIndices (local indices into the table of vertices declared above)
+these should be listed in anti-clockwise order; 
+r/g/b (basecolor), (local) textureindex<br>
+look at an example to see what they're made up of
+</p>
+<li>a <a name = "world">world file</a>:
+<p>
+a header consisting of "number_of_Objects" and general definitions about the 'camera' followed
+by number_of_Objects Objects - pointers to <a href = "#xyz">xyz-file</a>-names with properties like display type
+(wireframe, flat, gouraud, textured (linear), shaded+textured)
+the point the object rotates around [origin], the objects' "Energy" (rotations), size and position
+<em>note that if autosave_the_.wld is enabled, most properties of a world file will be saved when terminating xpos [if
+you need the original version, recompile the .id-file]</em>
+</p>
+<li>xpos 0.?/ utils
+        <ul>
+	<li>.id files are world source files, compile them to .wld files using newwld.bat 
+      [i.e. "newwld my_world" uses <em>playgod</em> to compile my_world.id to my_world.wld after you've edited it]
+        <li>playgod my_world.id my_world.wld
+        </ul>
+<li>xpos 0.?
+	<ul>
+        <li>call XPOS with the <a href="#world">world-file</a> as an argument - i.e.: xpos my_world.wld
+        <li>the movement is like descent (A fwd, Z backwd, arrow keys), except: PAD7 is roll left, PAD9 is roll right
+        <li>a is forward, Z is backward (Y in Germany), backspace -> turn around (when you turn, the movement is exactly the opposite) 
+        <li>space: toggle showing infos and world-system-axis/infos/marking cobj, runs slower, but often helps
+	<li>hold O, +/- = change current object (cobj)
+	<li>F->+/- changes FOV
+	<li>P->+/- changes size of the projection plane
+	<li>press Q: saves screen to screen.spr (convert to DIB w/ makebm)
+        <li>press H: toggle hidden surface removal
+        <li>press D: toggle lightsource dragging
+        <li>press W: save world-configuration to .wld-file (note this will be updated if autosave_the_world = "yes")
+        <li>hold S, press +/-: scale current object
+        <li>hold x/y/z, press +/-: change 'rotational energy' of cobj
+        <li>N->+/- changes near clipping plane parameter (i.e. Z = -1.0)
+	</ul>
+</ul>
+
+</BODY>
+</HTML>

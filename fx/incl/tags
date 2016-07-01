@@ -1,0 +1,1507 @@
+
+fifo_low.asm,243
+_keyhandler__Fv:15,183
+push 16,200
+push 17,209
+in 18,218
+mov 19,229
+and 20,239
+test 21,252
+setz 22,265
+in 24,338
+or 25,349
+out 26,360
+and 27,372
+out 28,384
+mov 29,396
+out 30,408
+pop 31,420
+pop 32,428
+_keyhandler__Size 36,446
+
+vesalow.asm,15665
+_putpixel__FiiUc:49,1191
+push 50,1209
+mov 51,1218
+push 52,1230
+push 53,1239
+mov 54,1248
+mov 55,1269
+mov 56,1297
+mul 57,1316
+mov 58,1324
+add 59,1336
+add 60,1354
+mov 62,1449
+mov 63,1472
+pop 64,1485
+pop 65,1493
+mov 66,1501
+pop 67,1513
+_getpixel__Fii:72,1571
+push 73,1587
+mov 74,1596
+push 75,1608
+push 76,1617
+mov 77,1626
+mov 78,1647
+mov 79,1675
+mul 80,1694
+mov 81,1702
+add 82,1714
+add 83,1732
+xor 84,1744
+mov 85,1756
+pop 86,1769
+pop 87,1777
+mov 88,1785
+pop 89,1797
+push 95,1866
+push 96,1875
+mov 98,1887
+mov 99,1908
+mov 100,1918
+mov 101,1928
+xor 102,1956
+rep 103,1968
+pop 104,1978
+pop 105,1985
+_flipoffscreenmem__Fv:110,2030
+push 111,2053
+push 112,2062
+push 113,2071
+mov 114,2079
+xor 115,2101
+mov 116,2113
+mov 117,2134
+rep 119,2166
+pop 120,2176
+pop 121,2183
+pop 122,2191
+_putbgimage__FPc:127,2256
+push 128,2274
+mov 129,2283
+push 130,2296
+push 131,2305
+push 132,2314
+mov 133,2322
+mov 134,2332
+mov 135,2342
+mov 136,2363
+mov 137,2381
+rep 139,2413
+pop 140,2423
+pop 141,2430
+pop 142,2438
+mov 143,2446
+pop 144,2458
+_hline__FiiiUc:150,2565
+push 151,2581
+mov 152,2590
+push 153,2602
+push 154,2611
+push 155,2620
+mov 156,2628
+mov 157,2649
+mov 158,2668
+mul 159,2696
+mov 160,2704
+add 161,2722
+add 162,2734
+mov 163,2746
+sub 164,2765
+mov 165,2777
+mov 166,2787
+xor 167,2797
+mov 168,2809
+mov 169,2832
+shl 170,2842
+or 171,2851
+mov 172,2860
+shl 173,2872
+or 174,2883
+mov 176,2959
+shr 177,2971
+rep 178,2981
+mov 179,2991
+and 180,3003
+rep 181,3013
+pop 182,3023
+pop 183,3030
+pop 184,3038
+mov 185,3046
+pop 186,3058
+_clip_hline__FiiiUc:192,3208
+push 193,3229
+mov 194,3238
+push 195,3250
+push 196,3259
+push 197,3268
+mov 198,3276
+mov 199,3297
+and 200,3316
+js 201,3328
+cmp 202,3358
+jge 203,3374
+mov 204,3409
+mul 205,3437
+add 206,3445
+mov 207,3457
+and 208,3486
+jns 209,3498
+xor 210,3507
+.ok1:211,3539
+cmp 212,3545
+jae 213,3561
+add 214,3597
+mov 215,3609
+and 216,3628
+js 217,3640
+cmp 218,3671
+jb 219,3687
+mov 220,3695
+dec 221,3711
+.ok2:222,3750
+sub 223,3756
+mov 224,3768
+mov 225,3778
+xor 226,3788
+mov 227,3800
+mov 228,3823
+shl 229,3833
+or 230,3842
+mov 231,3851
+shl 232,3863
+or 233,3874
+mov 235,3950
+shr 236,3962
+rep 237,3972
+mov 238,3982
+and 239,3994
+rep 240,4004
+.line_is_offscreen:241,4014
+pop 242,4034
+pop 243,4041
+pop 244,4049
+mov 245,4057
+pop 246,4069
+_vline__FiiiUc:253,4177
+push 254,4193
+mov 255,4202
+push 256,4214
+push 257,4223
+mov 258,4232
+mov 259,4253
+mov 260,4337
+mul 261,4365
+mov 262,4373
+add 263,4392
+add 264,4404
+mov 266,4417
+sub 267,4436
+mov 269,4455
+.yloop:271,4514
+mov 272,4522
+add 273,4556
+dec 274,4568
+jnz 275,4576
+pop 276,4593
+pop 277,4601
+mov 278,4609
+pop 279,4621
+_getimage__FiiiiPc:284,4712
+push 285,4732
+mov 286,4741
+push 287,4753
+push 288,4761
+push 289,4770
+push 290,4779
+mov 291,4788
+mov 292,4798
+mov 293,4808
+mov 294,4827
+mov 295,4896
+mov 296,4915
+inc 297,4944
+mov 298,4952
+inc 299,4968
+mov 300,4976
+mov 301,4995
+inc 302,5025
+mov 303,5033
+inc 304,5049
+mov 306,5084
+mov 307,5116
+mul 308,5144
+add 309,5152
+add 310,5170
+mov 311,5182
+mov 312,5216
+mov 313,5249
+jmp 315,5286
+.yloop:316,5307
+sub 317,5315
+add 318,5401
+shr 320,5462
+rep 321,5472
+mov 322,5482
+and 323,5494
+rep 324,5504
+mov 325,5514
+dec 326,5526
+jnz 327,5534
+pop 329,5552
+pop 330,5560
+pop 331,5568
+pop 332,5576
+mov 333,5583
+pop 334,5595
+_putimage__FiiPc:339,5663
+push 340,5681
+mov 341,5690
+push 342,5702
+push 343,5710
+push 344,5719
+push 345,5728
+mov 346,5737
+mov 347,5747
+mov 348,5757
+mov 349,5776
+mov 351,5875
+mov 352,5907
+mul 353,5935
+add 354,5943
+add 355,5961
+xor 358,5998
+mov 360,6016
+mov 362,6048
+mov 363,6075
+jmp 364,6107
+.yloop:366,6129
+sub 367,6137
+add 368,6223
+shr 370,6284
+rep 371,6294
+mov 372,6304
+and 373,6316
+rep 374,6326
+mov 375,6336
+dec 376,6348
+jnz 377,6356
+pop 378,6373
+pop 379,6381
+pop 380,6389
+pop 381,6397
+mov 382,6404
+pop 383,6416
+align 388,6483
+_clipputimage__FiiPc:389,6579
+push 390,6601
+mov 391,6610
+push 392,6622
+push 393,6630
+push 394,6639
+push 395,6648
+mov 396,6657
+mov 397,6667
+mov 398,6677
+mov 399,6696
+mov 401,6795
+mov 402,6827
+mul 403,6855
+add 404,6863
+add 405,6881
+xor 408,6918
+lodsw 409,6930
+mov 410,6950
+sub 411,6966
+dec 412,6984
+cmp 413,7024
+jb 414,7036
+mov 415,7106
+.clip1:416,7165
+mov 417,7173
+sub 418,7209
+mov 419,7247
+mov 421,7271
+sub 422,7287
+dec 423,7306
+cmp 424,7347
+jb 425,7359
+mov 426,7432
+.clip2:427,7495
+jmp 428,7503
+.yloop:430,7525
+sub 431,7533
+add 432,7607
+add 433,7666
+shr 435,7727
+rep 436,7737
+mov 437,7747
+and 438,7759
+rep 439,7769
+mov 440,7779
+dec 441,7791
+jnz 442,7799
+pop 444,7817
+pop 445,7825
+pop 446,7833
+pop 447,7841
+mov 448,7848
+pop 449,7860
+_waitVR__Fv:454,7895
+mov 456,7914
+.loop1:457,7928
+in 458,7936
+and 459,7945
+jnz 460,7957
+.loop2:461,7974
+in 462,7982
+and 463,7991
+jz 464,8003
+_setpal__FPc:470,8060
+push 471,8074
+mov 472,8083
+push 473,8095
+mov 474,8104
+mov 475,8122
+mov 476,8160
+xor 477,8174
+out 478,8184
+inc 479,8218
+rep 481,8246
+pop 482,8256
+mov 483,8264
+pop 484,8276
+_getpal__FPc:489,8320
+push 490,8334
+mov 491,8343
+push 492,8355
+push 493,8364
+mov 494,8372
+mov 495,8382
+mov 496,8392
+xor 497,8406
+out 498,8416
+mov 499,8426
+mov 500,8440
+mov 501,8458
+rep 503,8500
+pop 504,8509
+pop 505,8516
+mov 506,8524
+pop 507,8536
+_setblackpal__Fv:512,8576
+mov 513,8594
+xor 514,8608
+out 515,8618
+inc 516,8628
+mov 517,8635
+.loopclrpal:518,8650
+out 519,8663
+dec 520,8673
+jnz 521,8681
+_setLogicalScanlineWidthPixels__Fi:526,8761
+push 527,8797
+mov 528,8806
+push 529,8818
+mov 530,8827
+mov 531,8845
+xor 532,8864
+xor 533,8876
+int 534,8888
+xor 535,8897
+cmp 536,8909
+jne 537,8923
+mov 538,8940
+.Error:539,8950
+pop 540,8958
+mov 541,8966
+pop 542,8978
+_getLogicalScanlineWidthPixels__Fv:547,9035
+push 548,9071
+mov 549,9080
+xor 550,9099
+mov 551,9111
+int 552,9121
+xor 553,9130
+cmp 554,9142
+jne 555,9156
+mov 556,9173
+.Error:557,9185
+pop 558,9193
+_setDisplayStart__Fii:563,9248
+push 564,9271
+mov 565,9280
+push 566,9292
+mov 567,9301
+xor 568,9320
+mov 569,9332
+mov 570,9350
+int 571,9369
+xor 572,9378
+cmp 573,9390
+jne 574,9404
+mov 575,9421
+.Error:576,9431
+pop 577,9439
+mov 578,9447
+pop 579,9459
+_getDisplayStart__FPiT0:584,9516
+push 585,9541
+mov 586,9550
+push 587,9562
+mov 588,9571
+mov 589,9590
+xor 590,9600
+xor 591,9612
+int 592,9624
+cmp 593,9633
+jne 594,9647
+mov 595,9664
+mov 596,9682
+mov 597,9702
+mov 598,9721
+jmp 599,9741
+.Error:600,9755
+xor 601,9763
+pop 602,9775
+mov 603,9783
+pop 604,9795
+.OK:605,9803
+mov 606,9808
+pop 607,9818
+mov 608,9826
+pop 609,9838
+_drawhll_flat__FiiUc:628,10416
+push 629,10438
+mov 630,10447
+sub 631,10459
+push 632,10497
+push 633,10506
+push 634,10515
+push 635,10524
+mov 637,10533
+mov 638,10558
+mov 639,10579
+mov 640,10589
+mov 642,10627
+mov 643,10658
+mul 644,10686
+add 645,10694
+mov 647,10707
+sub 648,10726
+inc 649,10772
+mov 650,10816
+shl 651,10886
+add 652,10896
+xor 653,10973
+mov 654,11010
+mov 655,11033
+shl 656,11043
+or 657,11052
+mov 658,11061
+shl 659,11073
+or 660,11084
+mov 661,11156
+.loop:665,11185
+mov 667,11294
+mov 668,11331
+cmp 669,11363
+ja 670,11406
+sub 671,11457
+add 672,11483
+mov 673,11518
+mov 674,11536
+shr 675,11600
+rep 676,11610
+mov 677,11620
+and 678,11632
+rep 679,11642
+sub 680,11652
+.notvalid:682,11728
+add 683,11739
+add 684,11814
+dec 685,11825
+jnz 686,11862
+pop 688,11879
+pop 689,11886
+pop 690,11894
+pop 691,11902
+mov 692,11910
+pop 693,11922
+push 699,12034
+mov 700,12043
+sub 701,12055
+push 702,12093
+push 703,12102
+push 704,12111
+push 705,12120
+mov 707,12129
+mov 708,12154
+mov 709,12175
+mov 710,12185
+mov 712,12223
+mov 713,12254
+mul 714,12282
+add 715,12290
+mov 717,12303
+sub 718,12322
+inc 719,12368
+mov 720,12412
+shl 721,12482
+add 722,12492
+cld 724,12570
+shl 725,12586
+.loop:727,12641
+mov 729,12751
+mov 730,12788
+cmp 731,12820
+jae 732,12864
+sub 733,12963
+add 734,12989
+mov 736,13025
+shl 737,13037
+mov 738,13129
+mov 739,13175
+sub 740,13219
+xor 742,13232
+test 743,13244
+jz 744,13264
+neg 745,13281
+shld 746,13337
+div 747,13396
+neg 748,13453
+jmp 749,13461
+.nosign:751,13488
+shld 752,13497
+div 753,13556
+.after_div:755,13615
+mov 757,13628
+mov 758,13668
+add 759,13712
+.innerinnerloop:762,13764
+mov 763,13781
+shr 764,13793
+stosb 766,13805
+add 767,13834
+dec 768,13846
+jnz 769,13854
+sub 771,13881
+.notvalid:773,13957
+add 774,13968
+add 775,14043
+dec 776,14054
+jnz 777,14091
+pop 779,14102
+pop 780,14109
+pop 781,14117
+pop 782,14125
+mov 783,14133
+pop 784,14145
+push 790,14289
+mov 791,14298
+sub 792,14310
+push 793,14350
+push 794,14359
+push 795,14368
+push 796,14377
+mov 798,14386
+mov 799,14411
+mov 800,14432
+mov 801,14442
+mov 803,14480
+mov 804,14511
+mul 805,14539
+add 806,14547
+mov 808,14560
+sub 809,14579
+inc 810,14625
+mov 811,14669
+shl 812,14739
+add 813,14749
+cld 815,14827
+.loop:817,14849
+mov 819,14959
+mov 820,14996
+cmp 821,15028
+jae 822,15072
+sub 823,15170
+add 824,15196
+mov 826,15232
+shl 827,15244
+mov 830,15355
+mov 831,15404
+sub 832,15452
+xor 833,15464
+test 834,15476
+jz 835,15496
+neg 836,15514
+shld 837,15566
+div 838,15625
+neg 839,15678
+jmp 840,15686
+.nosign1:842,15714
+shld 843,15724
+div 844,15783
+.after_div1:846,15838
+mov 847,15851
+mov 850,15982
+mov 851,16031
+sub 852,16079
+xor 853,16091
+test 854,16103
+jz 855,16123
+neg 856,16141
+shld 857,16193
+div 858,16252
+neg 859,16305
+jmp 860,16313
+.nosign2:862,16341
+shld 863,16351
+div 864,16410
+.after_div2:866,16465
+mov 867,16478
+mov 869,16529
+mov 870,16548
+mov 871,16567
+mov 872,16648
+.innerinnerloop:875,16674
+mov 876,16691
+push 877,16703
+shr 878,16712
+mov 879,16789
+shl 880,16807
+pop 881,16851
+push 882,16859
+mov 883,16868
+shr 884,16880
+add 885,16891
+xor 886,16903
+mov 887,16915
+pop 888,16939
+stosb 891,16949
+add 892,16978
+add 893,16996
+dec 894,17015
+jnz 895,17023
+mov 897,17050
+sub 898,17069
+.notvalid:900,17145
+add 901,17156
+add 902,17231
+dec 903,17242
+jnz 904,17279
+pop 906,17295
+pop 907,17302
+pop 908,17310
+pop 909,17318
+mov 910,17326
+pop 911,17338
+push 917,17498
+mov 918,17507
+sub 919,17519
+push 920,17550
+push 921,17559
+push 922,17568
+push 923,17577
+mov 925,17586
+mov 926,17611
+mov 927,17632
+mov 928,17642
+mov 930,17680
+mov 931,17711
+mul 932,17739
+add 933,17747
+mov 935,17760
+sub 936,17779
+inc 937,17825
+mov 938,17869
+shl 939,17939
+add 940,17949
+cld 942,18027
+.loop:944,18049
+mov 946,18159
+mov 947,18196
+cmp 948,18228
+jae 949,18272
+sub 950,18370
+add 951,18396
+mov 953,18432
+shl 954,18444
+mov 957,18555
+mov 958,18604
+sub 959,18652
+xor 960,18664
+test 961,18676
+jz 962,18696
+neg 963,18714
+shld 964,18766
+div 965,18825
+neg 966,18878
+jmp 967,18886
+.nosign1:969,18914
+shld 970,18924
+div 971,18983
+.after_div1:973,19038
+mov 974,19051
+mov 977,19182
+mov 978,19231
+sub 979,19279
+xor 980,19291
+test 981,19303
+jz 982,19323
+neg 983,19341
+shld 984,19393
+div 985,19452
+neg 986,19505
+jmp 987,19513
+.nosign2:989,19541
+shld 990,19551
+div 991,19610
+.after_div2:993,19665
+mov 994,19678
+mov 998,19816
+mov 999,19864
+sub 1000,19910
+xor 1001,19922
+test 1002,19934
+jz 1003,19954
+neg 1004,19972
+shld 1005,20028
+div 1006,20087
+neg 1007,20144
+jmp 1008,20152
+.nosign3:1010,20180
+shld 1011,20190
+div 1012,20249
+.after_div3:1014,20308
+mov 1015,20321
+mov 1018,20377
+mov 1019,20396
+mov 1020,20432
+mov 1021,20451
+mov 1022,20487
+mov 1023,20505
+mov 1024,20545
+.innerinnerloop:1027,20596
+mov 1029,20614
+push 1030,20633
+mov 1031,20642
+shr 1032,20660
+shl 1033,20737
+pop 1034,20806
+shr 1035,20814
+add 1036,20845
+xor 1037,20857
+mov 1038,20869
+mov 1039,20893
+mov 1040,20963
+shr 1041,20982
+mov 1042,20993
+stosb 1044,21018
+mov 1046,21048
+add 1047,21067
+mov 1048,21085
+mov 1049,21104
+add 1050,21123
+mov 1051,21142
+mov 1052,21161
+add 1053,21180
+mov 1054,21199
+dec 1055,21218
+jnz 1056,21226
+mov 1058,21253
+sub 1059,21272
+.notvalid:1061,21348
+add 1062,21359
+add 1063,21434
+dec 1064,21445
+jnz 1065,21482
+pop 1067,21498
+pop 1068,21505
+pop 1069,21513
+pop 1070,21521
+mov 1071,21529
+pop 1072,21541
+_floatt_hline__FiiiiiiiiPUc:1077,21710
+push 1078,21739
+mov 1079,21748
+push 1080,21760
+push 1081,21769
+push 1082,21777
+push 1083,21786
+mov 1085,21796
+mov 1086,21817
+mov 1087,21827
+mov 1088,21837
+mov 1089,21856
+mul 1090,21884
+add 1091,21892
+mov 1092,21904
+add 1093,21922
+mov 1094,21934
+sub 1095,21953
+mov 1096,21979
+mov 1098,22018
+mov 1099,22059
+sub 1100,22101
+shr 1101,22153
+mov 1102,22190
+mov 1103,22209
+mov 1104,22250
+sub 1105,22292
+shr 1106,22343
+mov 1107,22380
+fild 1109,22405
+fidiv 1110,22440
+fild 1111,22480
+fidiv 1112,22534
+fild 1113,22574
+fild 1114,22648
+.loop:1117,22740
+mov 1118,22747
+fist 1119,22837
+mov 1120,22858
+fist 1122,22884
+mov 1123,22906
+mov 1125,22933
+mul 1126,22976
+add 1127,23003
+add 1128,23015
+fadd 1131,23039
+fadd 1133,23073
+dec 1135,23111
+jnz 1136,23119
+pop 1138,23136
+pop 1139,23144
+pop 1140,23152
+pop 1141,23159
+mov 1142,23167
+pop 1143,23179
+_write3D4:1152,23266
+mov 1153,23277
+out 1154,23291
+mov 1155,23301
+inc 1156,23311
+in 1157,23318
+xchg 1158,23327
+dec 1159,23338
+_read3D4:1166,23394
+mov 1167,23404
+out 1168,23418
+xchg 1169,23428
+inc 1170,23439
+out 1171,23446
+xchg 1172,23456
+dec 1173,23467
+_S3_EnableExtensions:1177,23485
+mov 1178,23535
+call 1179,23549
+mov 1180,23604
+call 1181,23618
+_S3_DisableExtensions:1185,23684
+mov 1186,23707
+call 1187,23721
+mov 1188,23776
+call 1189,23790
+_come_on_push_it__Fv:1194,23882
+pusha 1195,23966
+call 1196,23981
+mov 1197,24007
+call 1198,24062
+or 1199,24128
+call 1200,24193
+call 1201,24227
+popa 1202,24254
+_findnearestcolor__FPcccc:1207,24355
+push 1208,24382
+mov 1209,24391
+push 1210,24403
+push 1211,24412
+mov 1213,24422
+mov 1214,24440
+mov 1215,24454
+.loop:1216,24515
+push 1218,24523
+xor 1219,24606
+mov 1220,24618
+sub 1221,24636
+imul 1222,24655
+mov 1223,24664
+inc 1224,24676
+xor 1225,24684
+mov 1226,24696
+sub 1227,24714
+imul 1228,24733
+add 1229,24742
+inc 1230,24754
+xor 1231,24762
+mov 1232,24774
+sub 1233,24792
+imul 1234,24811
+add 1235,24820
+inc 1236,24894
+pop 1237,24902
+cmp 1239,24911
+jne 1240,24921
+mov 1241,24947
+sub 1242,24961
+jmp 1243,24973
+.NoPerfectMatch:1244,24995
+cmp 1245,25012
+jae 1246,25024
+mov 1247,25086
+mov 1248,25121
+sub 1249,25135
+mov 1250,25147
+.I_could_have_a_better_one:1251,25199
+dec 1252,25227
+jnz 1253,25235
+mov 1254,25251
+.quit_early:1255,25269
+pop 1256,25282
+pop 1257,25290
+mov 1258,25298
+pop 1259,25310
+_findnearestcolor_8__FPcUcUcUc:1265,25507
+push 1266,25539
+mov 1267,25548
+push 1268,25560
+push 1269,25569
+mov 1271,25579
+mov 1272,25597
+mov 1273,25611
+.loop:1274,25672
+push 1276,25680
+xor 1277,25763
+mov 1278,25775
+inc 1279,25793
+shl 1280,25800
+dec 1281,25809
+sub 1282,25816
+imul 1283,25835
+mov 1284,25844
+inc 1285,25856
+xor 1286,25864
+mov 1287,25876
+inc 1288,25894
+shl 1289,25901
+dec 1290,25910
+sub 1291,25917
+imul 1292,25936
+add 1293,25945
+inc 1294,25957
+xor 1295,25965
+mov 1296,25977
+inc 1297,25995
+shl 1298,26002
+dec 1299,26011
+sub 1300,26018
+imul 1301,26037
+add 1302,26046
+inc 1303,26120
+pop 1304,26128
+cmp 1306,26137
+jne 1307,26147
+mov 1308,26173
+sub 1309,26187
+jmp 1310,26199
+.NoPerfectMatch:1311,26221
+cmp 1312,26238
+jae 1313,26250
+mov 1314,26312
+mov 1315,26347
+sub 1316,26361
+mov 1317,26373
+.I_could_have_a_better_one:1318,26425
+dec 1319,26453
+jnz 1320,26461
+mov 1321,26477
+.quit_early:1322,26495
+pop 1323,26508
+pop 1324,26516
+mov 1325,26524
+pop 1326,26536
+
+camera.h,552
+#define __CAMERA_H2,19
+#define  Lightsource 18,356
+struct CameraCamera20,390
+inline void calc_intersect_far(52,1537
+inline void calc_intersect_near(60,1894
+inline void calc_intersect_left(68,2275
+inline void calc_intersect_right(76,2673
+inline void calc_intersect_bottom(84,3068
+inline void calc_intersect_top(92,3464
+inline void set_screen_plane_size(100,3861
+inline void immer_der_Nase_nach(107,4015
+inline void setFOV(115,4244
+inline void slide(124,4392
+inline void vertical_men(132,4607
+inline void project_point_ClipSpace(140,4829
+
+fifo99.h,1804
+#define __FIFO99_H2,19
+#define KEY_ESC 4,39
+#define KEY_1 5,61
+#define KEY_2 6,83
+#define KEY_3 7,105
+#define KEY_4 8,127
+#define KEY_5 9,149
+#define KEY_6 10,171
+#define KEY_7 11,193
+#define KEY_8 12,215
+#define KEY_9 13,237
+#define KEY_0 14,259
+#define KEY_BACK 15,281
+#define KEY_TAB 16,303
+#define KEY_Q 17,325
+#define KEY_W 18,347
+#define KEY_E 19,369
+#define KEY_R 20,391
+#define KEY_T 21,413
+#define KEY_Z 22,435
+#define KEY_U 23,457
+#define KEY_I 24,479
+#define KEY_O 25,501
+#define KEY_P 26,523
+#define KEY_ENTER 27,545
+#define KEY_CTRL 28,567
+#define KEY_LCTRL 29,589
+#define KEY_A 30,611
+#define KEY_S 31,633
+#define KEY_D 32,655
+#define KEY_F 33,677
+#define KEY_G 34,699
+#define KEY_H 35,721
+#define KEY_J 36,743
+#define KEY_K 37,765
+#define KEY_L 38,787
+#define KEY_LSHIFT 39,809
+#define KEY_Y 40,831
+#define KEY_X 41,853
+#define KEY_C 42,875
+#define KEY_V 43,897
+#define KEY_B 44,919
+#define KEY_N 45,941
+#define KEY_M 46,963
+#define KEY_RSHIFT 47,985
+#define KEY_ALT 48,1007
+#define KEY_LALT 49,1029
+#define KEY_SPACE 50,1051
+#define KEY_CLOCK 51,1073
+#define KEY_F1 52,1095
+#define KEY_F2 53,1117
+#define KEY_F3 54,1139
+#define KEY_F4 55,1161
+#define KEY_F5 56,1183
+#define KEY_F6 57,1205
+#define KEY_F7 58,1227
+#define KEY_F8 59,1249
+#define KEY_F9 60,1271
+#define KEY_F10 61,1293
+#define KEY_F11 62,1315
+#define KEY_F12 63,1338
+#define KEY_NLOCK 64,1361
+#define KEY_SLOCK 65,1383
+#define KEY_PAD7 66,1405
+#define KEY_PAD8 67,1427
+#define KEY_PAD9 68,1449
+#define KEY_MINUS 69,1471
+#define KEY_PAD4 70,1493
+#define KEY_PAD5 71,1515
+#define KEY_PAD6 72,1537
+#define KEY_PLUS 73,1559
+#define KEY_PAD1 74,1581
+#define KEY_PAD2 75,1603
+#define KEY_PAD3 76,1625
+#define KEY_PAD0 77,1647
+#define KEY_PADPOINT 78,1669
+
+fileio.h,24
+#define __FILEIO_H2,19
+
+function.h,390
+#define __FUNCTION_H2,21
+enum OperatorTypeOperatorType6,73
+#define SMALL_NUMBER 15,464
+#define MAX_EXPR_LEN 16,514
+struct KnotKnot20,588
+enum RECORD_ERROR_VALRECORD_ERROR_VAL28,733
+enum DERIVE_ERROR_VALDERIVE_ERROR_VAL36,1000
+enum EVALUATE_ERROR_VALEVALUATE_ERROR_VAL41,1079
+#define IS_OPEN_PARENTH(IS_OPEN_PARENTH50,1397
+#define IS_CLOSED_PARENTH(IS_CLOSED_PARENTH51,1465
+
+gformats.h,486
+#define __GFORMATS_H2,21
+#define PACKED 6,91
+struct DIB_fileheaderDIB_fileheader9,191
+struct DIB_infoheaderDIB_infoheader17,361
+struct rgbQuadrgbQuad32,819
+enum BGDIB_DISPLAY_MODE BGDIB_DISPLAY_MODE41,975
+enum PAL_MODE PAL_MODE42,1032
+enum DIB_FILE_TYPEDIB_FILE_TYPE43,1074
+#define BITMAP_WIDTH(BITMAP_WIDTH49,1297
+#define BITMAP_HEIGHT(BITMAP_HEIGHT50,1383
+#define LOW_BYTE(LOW_BYTE51,1469
+#define HIGH_BYTE(HIGH_BYTE52,1516
+#define DIB_FILE_CANT_HANDLE 53,1586
+
+grtext.h,268
+#define __GRTEXT_H2,19
+#define GRTEXT_BGTRANSPARENT	4,39
+#define GRTEXT_TABLENGTH	5,81
+inline int getcharcellwidth(24,828
+inline int getcharcellheight(29,884
+inline void showstrxy(34,941
+inline void settextsize(41,1084
+inline void getBDA8x8charpattern(50,1252
+
+lcstdlib.h,26
+#define __LCSTDLIB_H2,21
+
+matrix.h,0
+
+object3d.h,289
+#define __OBJECT3D_H2,21
+#define FACE_DISPLAY_WIREFRAME 12,164
+#define FACE_DISPLAY_SHADED 13,211
+#define FACE_DISPLAY_FLAT 14,258
+#define FACE_DISPLAY_GOURAUD 15,328
+#define FACE_DISPLAY_TEXTURED 16,401
+#define FACE_DISPLAY_SHADED_TEXTURE 17,448
+inline void resetTransform(20,497
+
+palettes.h,342
+#define __PALETTES_H2,21
+enum NEARESTCC NEARESTCC4,43
+enum PAL_FADE_SPEED PAL_FADE_SPEED8,214
+struct RGBcolor RGBcolor9,285
+#define COLOR_8to6(COLOR_8to611,431
+#define COLOR_6to8(COLOR_6to813,581
+#define PAL_RED(PAL_RED16,714
+#define PAL_GREEN(PAL_GREEN17,750
+#define PAL_BLUE(PAL_BLUE18,788
+#define SHADES_PER_COLOR 20,826
+
+quitbug.h,27
+#define __QUITBUGGING2,22
+
+timer.h,309
+#define __TIMER_H2,18
+#define PIT0defaultfreq 4,37
+#define PIT_CHANNEL0_PORT 5,80
+#define PIT_CHANNEL1_PORT 6,117
+#define PIT_CHANNEL2_PORT 7,154
+#define PIT_CONTROL_PORT 8,191
+#define PIT_FREQUENCY 9,228
+#define IRQ0_INT 10,292
+#define PIT_CONTROL_SETTINGS 11,329
+#define PIT_SETTINGS_RESET 12,366
+
+vbetwo.h,801
+#define __VBETWO_H2,19
+} VBE_memModels;VBE_memModels13,635
+#define vbeModeAvailable	18,842
+#define vbeModeTTYOutput	19,909
+#define vbeModeColorMode	20,981
+#define vbeModeGraphMode	21,1051
+#define vbeModeNonVGA	22,1118
+#define vbeModeNonBanked	23,1198
+#define vbeModeLinear	24,1270
+#define vbeModeDoubleScan	25,1345
+#define vbeModeInterlaced	26,1412
+#define vbeModeTripleBuffer 27,1484
+#define vbeModeStereo	28,1561
+#define vbeModeDualDisplay 29,1643
+#define vbeModeAvailablewithLFB 30,1730
+#define PACKED 32,1856
+struct VBE_MODEINFOVBE_MODEINFO35,1956
+struct VBEINFOVBEINFO76,4921
+struct VBE_PM_InterfaceVBE_PM_Interface95,5859
+struct rasterpointrasterpoint103,6044
+#define VBE_MODEFLAG_LFB 114,6175
+#define VBE_MODEFLAG_DONTCLEAR 115,6214
+inline char* Imageblock(128,6560
+
+vecmat.h,711
+#define __VECMAT_H2,19
+#define VEC_X	5,40
+#define VEC_Y	6,57
+#define VEC_Z	7,74
+typedef float Vector3D[Vector3D8,91
+#define point3d 9,118
+typedef float Matrix4x4[Matrix4x410,151
+inline void normVec(13,184
+inline void addVec(21,385
+inline void addVec(28,550
+inline void subVec(35,679
+inline void subVec(42,844
+inline void negateVec(49,973
+inline void initVec(56,1083
+inline float dotProd(63,1194
+inline void crossProd(68,1315
+inline void scaleVec(75,1549
+inline float VecMagnitude(82,1666
+inline void assignVec(87,1791
+inline void IdentityMat(92,1889
+inline void ScalingMat(100,2197
+inline void TranslationMat(108,2528
+inline void assignMat(116,2863
+inline void MulVecMatZonly(121,2970
+
+world3d.h,226
+#define WORLD3D_H2,18
+#define MAX_OBJECTS 4,37
+#define MAX_TEXTURES 5,71
+#define MAX_VERTICES 6,133
+#define MAX_FACES 7,169
+#define MAX_FACES_GOURAUD 8,205
+#define MAX_TEXTURE_VERTS 9,239
+#define CLIPPING_CHECKS16,389
+
+xpos.h,1172
+#define __XPOS_H2,17
+#define PACKED	14,258
+#define MAX_PTS_PER_FACE_BEFORE_CLIPPING 16,300
+#define MAX_PTS_PER_FACE 17,356
+#define FACE_TYPE_WIREFRAME 19,448
+#define FACE_TYPE_FLAT 20,486
+#define FACE_TYPE_GOURAUD 21,524
+#define FACE_TYPE_TEXTURED 22,562
+#define FACE_TYPE_GOURAUD_TEXTURED 23,600
+#define CLIPPING_FLAG_LEFT 25,639
+#define CLIPPING_FLAG_RIGHT 26,684
+#define CLIPPING_FLAG_TOP 27,729
+#define CLIPPING_FLAG_BOTTOM 28,774
+#define CLIPPING_FLAG_NEAR 29,819
+#define CLIPPING_FLAG_FAR 30,864
+#define CLIPPED_LEFT(CLIPPED_LEFT32,910
+#define CLIPPED_RIGHT(CLIPPED_RIGHT33,977
+#define CLIPPED_TOP(CLIPPED_TOP34,1044
+#define CLIPPED_BOTTOM(CLIPPED_BOTTOM35,1110
+#define CLIPPED_NEAR(CLIPPED_NEAR36,1178
+#define CLIPPED_FAR(CLIPPED_FAR37,1243
+struct ScanlineScanline39,1307
+struct VertexVertex51,1578
+struct TextureTexture60,1794
+struct FaceFace66,1861
+struct XYZheaderXYZheader81,2361
+struct XYZTextureheader_8XYZTextureheader_890,2512
+struct XYZFaceheaderXYZFaceheader97,2728
+struct WorldHeaderWorldHeader107,3022
+struct WorldMeshWorldMesh118,3307
+struct SortItemSortItem128,3550
+struct PolyhedronPolyhedron136,3629
+
+camera.cpp,344
+void pitch(18,472
+void yaw(29,737
+void roll(39,993
+void rotateinWorld(49,1250
+void initCamera(54,1405
+void createMatrices(68,2000
+rasterpoint project_point(90,3064
+void clipline_near(105,3492
+void clipline_left(129,4084
+void clipline_right(153,4676
+void clipline_top(177,5273
+void clipline_bottom(201,5839
+void draw3dline(225,6442
+
+fifo99.cpp,221
+void installkeyhandler(14,213
+void restorekeyhandler(31,783
+int getkey(41,1050
+int peekkey(48,1155
+void clearkey(53,1217
+void clearallkeys(58,1278
+bool peekanykey(65,1363
+void printcodes(77,1518
+int main(88,1918
+
+fileio.cpp,19
+bool fexists(4,41
+
+function.cpp,643
+void export_expression_latex(9,196
+void make_exponent_explicit(253,7913
+int getOPPrecedence(275,8454
+char getOPchar(289,8732
+OperatorType getOPtype(303,9018
+void getmcOPString(316,9274
+OperatorType getmcOPtype(365,10249
+bool isCommutative(436,12053
+bool isBinary(457,12393
+void set_parse_tree_parents(465,12557
+void copy_expression(476,12761
+bool depends_on_x(496,13193
+bool depends_on_x_or_y(510,13432
+void derive_expression(524,13718
+void simplify_expression(983,39455
+bool simplify_expr(989,39534
+void knot2expr(1122,43825
+void freeKnot(1248,48040
+void record_expression(1268,48544
+double evaluate_expression(1446,53575
+
+gformats.cpp,252
+int createcolorlist(12,198
+char* loadspr_256(33,652
+void savespr_256(74,1983
+char* loadDIB_256(92,2518
+void saveDIB_256(181,5172
+void check_DIB(238,7256
+#define slow_random(slow_random293,8361
+#define szfilenamespr 295,8458
+int main(301,8616
+
+grtext.cpp,256
+void appendString(12,292
+void changeCharacter(17,381
+void floatstr(29,763
+void showchar(59,1515
+void showstr(87,2268
+bool getcharpatternbit(116,2752
+void xorcharpatternbit(124,2919
+bool load8x8fontpattern(129,3053
+void save8x8fontpattern(145,3404
+
+matrix.cpp,412
+Matrix::Matrix(5,59
+Matrix::Matrix(18,366
+Matrix::~Matrix(32,709
+void Matrix::transpose(40,806
+void Matrix::setzero(58,1220
+void Matrix::print_tm(66,1349
+void Matrix::ero_type1(88,1740
+void Matrix::ero_type2(100,1954
+void Matrix::ero_type3(107,2092
+void Matrix::makeREF(118,2394
+bool Matrix::column_is_zero(166,4136
+bool Matrix::row_is_zero(175,4288
+bool Matrix::is_zero(184,4434
+int main(194,4598
+
+object3d.cpp,205
+void compute_geometric_center(10,241
+void compute_bounding_Sphere(19,539
+void translate(35,923
+void scale(42,1084
+void orbit(54,1583
+void rotate(66,2054
+void transform(78,2533
+void loadXYZ(96,3033
+
+palettes.cpp,772
+unsigned char findnearestcolor(16,486
+unsigned char findnearestbasecolor(21,624
+unsigned char findnearestbasecolor_8(27,826
+unsigned char findcontrastingindex(54,2055
+char* findtransitiontable(62,2721
+unsigned char* createshadinglookup(71,2987
+void createContrastTable(115,4541
+void updatecolors(122,4689
+void savepalette(143,5699
+int loadpalette(157,5978
+void createsmoothpal(169,6242
+static void linear_interpolate_colors(241,7883
+static void cosine_interpolate_colors(274,8926
+void createlinearshadepal(293,9615
+void createshadepal(320,11303
+void rotatepaldown(347,12985
+void rotatepalup(364,13605
+void fadepalinto(381,14108
+void fadepalout(404,14796
+#define WIDTH	424,15264
+#define SHADEWIDTH 425,15290
+void drawpal(432,15394
+int main(447,15813
+
+quitbug.cpp,98
+ErrorMessage::ErrorMessage(7,99
+void ErrorMessage::killmesoftly(15,299
+void handleError(30,862
+
+timer.cpp,174
+void setfrequency(15,364
+void installtimerhandler(25,649
+void restoretimerhandler(50,1504
+static void rmhandler(67,2029
+static void pmhandler(85,2398
+int main(104,2658
+
+vbetwo.cpp,1108
+struct outcodeoutcode18,456
+void setClipRect(56,1430
+static void safe_int(64,1579
+void saveScreen(70,1751
+static bool initVBE(88,2192
+static bool	getVBEModeInfo(120,3289
+bool openVBE(135,3662
+void closeVBE(217,6819
+void init_shadinglookups(238,7490
+void try_free_shadinglookups(245,7651
+void clip_fillcircle(253,7792
+void fillcircle(275,8258
+void circle(297,8699
+void clipcircle(323,9268
+void thickcircle(357,10553
+void line(407,12102
+void thickline(454,13269
+void clipline(513,14656
+void rectangle(658,17516
+void fillrect(666,17797
+void drawplasma(678,18143
+void clrhll(705,18840
+void scanside(715,19015
+void drawflatpoly(753,19758
+void g_scanside(772,20265
+static void Cdrawhll_gouraud(825,21439
+void drawgouraudpoly(853,22154
+void lineart_scanside(872,22653
+static void Cdrawhll_lineartexture(934,24124
+void drawlineartexturepoly(971,25379
+void tg_scanside(990,25949
+static void Cdrawhll_lineartexture_gouraud(1061,27814
+void drawtexturegouraudpoly(1106,29489
+void drawwireframe(1131,30268
+void brandmarkFace(1139,30653
+void scaleimage(1148,31005
+int main(1180,31820
+
+vecmat.cpp,189
+void MulVecMat(15,371
+void MulVecMat(24,739
+void RotationMat(31,1056
+void combineMat(41,1593
+void combineMat(50,1823
+void showvector(73,2317
+void drawaxes(94,2840
+int main(108,3203
+
+world3d.cpp,703
+void transform_to_clip(11,345
+void prepare_face_sorting(18,493
+void set_clipping_flags(38,966
+void reflect_on_it(74,2378
+void clippoly_near(137,4268
+void clippoly_left(189,6150
+void clippoly_right(241,8033
+void clippoly_top(293,9922
+void clippoly_bottom(345,11799
+void clip_and_project(397,13694
+void vecswap(493,16401
+void quicksort_faces(552,17531
+void exchangesort_faces(584,18400
+void bubblesort_faces(603,18824
+void simple_bubblesort_faces(627,19301
+void compute_normal(647,19703
+static void warmup_XPOS(656,20015
+void interpolate_normal(727,22695
+void compute_vertice_normals(752,23773
+void compute_geometric_center(759,23932
+void initXPOS(768,24245
+void trashXPOS(787,25250

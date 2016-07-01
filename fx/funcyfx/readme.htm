@@ -1,0 +1,54 @@
+<html>
+<head>
+<title>Readme for FuncyFX</title>
+</head>
+<body>
+
+<table bgcolor = "red">
+<tr>
+<td>If you are running Windows, please start this program only in <b>fullscreen-mode</b>
+(Alt+Enter at the DOS-Prompt).</td>
+</tr>
+</table>
+
+<h2>Introduction</h2>
+<p>
+Use the tab-key to enter console-mode. This is where you specify functions and work with them.
+Press the tab-key again to return to full-screen-mode. Here you can "walk-around" in the
+x-y-plane, and scale it's size using X/Y and +/-. You have 4 functions you can works with (f/g/h/i). Use f/g/h/i = <function>
+to assign functions. To show/hide a function or one of its derivatives,
+use show/hide. These and more commands are described below.
+You can choose any resolution that your VBE 2.0 supports by changing fx.cfg.
+<em>Type ? for a list of commands at runtime.</em>
+</p>
+
+<h2>Common commands</h2>
+<ul>
+<li>use <code>f/g/h/i = <function></code> to assign a function
+      <ul>
+      <li>the function will initially be shown, the two derivatives will be hidden (use show(f/g/h/i')
+      <li>functions available for function-definitions are [arc]sin/cos/tan/cot; ln/log(x,y)/sqrt/abs/sgn
+      <li>i.e.: <code>f=(x^3 - 2*x^2 + 6*x)/abs(sin(x)+log(2,x))</code>
+      </ul>
+<li>use <code>show/hide(f/g/h/i['/''])</code> to show or hide a function or one of its derivatives (1st and 2nd). i.e: <code>show(f')</code>
+<li>use <code>intersect(f/g/h/i, f/g/h/i)</code> to find the intersections between two functions (asaiw). i.e.: <code>intersect(f,g)</code>
+<li>use <code>texit(<f/g/h/i>, <filename.tex>)</code> to export a function's representation to LaTeX2e
+<li>use <code>integ(f/g/h/i, <left>, <right>)</code> to find a definite integral. i.e.: <code>integ(f,0,2)</code>
+<li>use <code>range(<left>, <right>, <bottom>, <top>)</code> to specify a range. i.e.: <code>range(-2*pi, 2*pi, -2, 2)</code>
+<li>use <code>eval(<expression>)</code> to evaluate an expression. i.e: <code>eval(sin(3/4*pi))</code>
+<li>use <code>analyze(f/g/h/i)</code> to analyze a function (asaiw). i.e.: <code>analyze(g)</code>
+<li>use <code>redraw</code> to redraw all visible functions (and derivatives)
+<li>use <code>clear</code> to hide all functions
+<li>use <code>whatsup</code> to see what each of the functions is set to.
+<li>
+</ul>
+
+<p>
+I used <a href = "http://www.ndh.net/home/natter/djgpp.htm">DJGPP</a>, a <em>free</em> 32bit-PM development environment
+for (extended) DOS applications, to create this program.<br>
+Take a look at <a href = "http://www.ndh.net/home/natter/">my homepage</a>.
+</p>
+
+</body>
+</html>
+

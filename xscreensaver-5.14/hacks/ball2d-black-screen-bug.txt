@@ -1,0 +1,31 @@
+Program received signal SIGINT, Interrupt.
+0x0804c3d8 in Ball_doCollision (dpy=0x805e4d0, window=301, closure=0x80596d0) at ball2d.c:639
+(gdb) bt
+#0  0x0804c3d8 in Ball_doCollision (dpy=0x805e4d0, window=301, closure=0x80596d0) at ball2d.c:639
+#1  Balls_move (dpy=0x805e4d0, window=301, closure=0x80596d0) at ball2d.c:826
+#2  ball2d_draw (dpy=0x805e4d0, window=301, closure=0x80596d0) at ball2d.c:1111
+#3  0x0804a113 in run_screenhack_table (argc=1, argv=0xbffff8e4) at screenhack.c:553
+#4  main (argc=1, argv=0xbffff8e4) at screenhack.c:921
+(gdb)frame 1
+#1  Balls_move (dpy=0x805e4d0, window=301, closure=0x80596d0) at ball2d.c:826
+(gdb) frame 0
+#0  0x0804c3d8 in Ball_doCollision (dpy=0x805e4d0, window=301, closure=0x80596d0) at ball2d.c:639
+(gdb) p *b1
+$1 = {x = 221.73003656728713, y = 148.82585200123168, dx = -0.84657436620593796, dy = -0.53227045990080513, mass = 1.9109416295334096, radius = 7.3492373329003433, color = 0, velocity = 0.74577284676398803, way_to_go = 0.64577284676398805, EOFiteration = 0, gc = 0x806bf80}
+(gdb) p *b2
+$2 = {x = 213.84945576714028, y = 140.94644122776481, dx = -0.85031105970051279, dy = -0.52628044021319176, mass = 1.9578240901366397, radius = 7.5602084056148788, color = 0, velocity = 0.72338633701123012, way_to_go = 0.62338633701123014, EOFiteration = 0, gc = 0x806ba58}
+(gdb) Ball_collision_check(b1,b2)
+Undefined command: "Ball_collision_check".  Try "help".
+(gdb) pBall_collision_check(b1,b2)
+Undefined command: "pBall_collisiopBall_collision_check(b1,b2)n_check".  Try "help".
+(gdb)  p Ball_collision_check(b1,b2)
+$3 = 1
+(gdb) p b1->dx
+$4 = -0.84657436620593796
+(gdb) p b1->dy
+$5 = -0.53227045990080513
+(gdb) p b2->dx
+$6 = -0.85031105970051279
+(gdb) p b2->dy
+$7 = -0.52628044021319176
+(gdb) 

@@ -1,0 +1,74 @@
+# adapt the definitions in ../global.mak
+# and the rules in rules.mak
+# you need to have NASM installed on your path
+
+#RELEASE=yes
+BASENAME = makebm
+BINARY_PACKAGE_FILES = $(BASENAME).exe makeall.exe readme.htm \
+..\util\CWSDPMI.* *.pal
+
+.PHONY: clean all default
+default: TAGS $(BASENAME).exe makeall.exe
+.IGNORE: clean
+
+all: $(BASENAME).zip
+
+include ../global.mak
+
+objects_makebm = $(INCLDIR)/vbetwo.o $(INCLDIR)/vesalow.o \
+$(INCLDIR)/fileio.o $(INCLDIR)/gformats.o $(INCLDIR)/grtext.o \
+$(INCLDIR)/palettes.o $(INCLDIR)/quitbug.o $(INCLDIR)/fifo_low.o \
+$(INCLDIR)/fifo99.o glob_bm.o makebm.o
+
+objects_makeall = $(INCLDIR)/fileio.o $(INCLDIR)/gformats.o $(INCLDIR)/fifo_low.o \
+$(INCLDIR)/fifo99.o $(INCLDIR)/palettes.o $(INCLDIR)/quitbug.o $(INCLDIR)/vesalow.o \
+makeall.o glob_all.o
+
+LDFLAGS =
+CXXFLAGS = -I. -I../incl
+
+ifdef RELEASE
+MY_CXXFLAGS = $(GLOBAL_RELEASE_CXXFLAGS)
+else
+MY_CXXFLAGS = $(GLOBAL_DEBUG_CXXFLAGS)
+endif
+
+include ../rules.mak
+
+# include generates dependencies (less redundancy for modules)
+include $(objects_makeall:.o=.d) $(objects_makebm:.o=.d)
+
+$(BASENAME).exe: $(objects_makebm)
+	$(LD) -o $(LDFLAGS) $@ $(objects_makebm)
+ifdef	RELEASE	
+	strip --strip-all $@
+else
+	@echo
+	@echo You are compiling a debug version. Uncomment RELEASE= in ./Makefile \
+	to build an optimized RELEASE-version
+endif
+
+makeall.exe: $(objects_makeall)
+	$(LD) -o $(LDFLAGS) $@ $(objects_makeall)
+ifdef	RELEASE	
+	strip --strip-all $@
+else
+	@echo
+	@echo You are compiling a debug version. Uncomment RELEASE= in ./Makefile \
+	to build an optimized RELEASE-version
+endif
+
+TAGS: $(INCLDIR)/TAGS $(wildcard *.cpp *.h *.asm *.c)
+	-etags -t -i $(INCLDIR)/TAGS -o TAGS $(GLOBAL_ETAGS_FILES)
+
+clean:
+	del *.o; del  ..\incl\*.o; del $(BASENAME).exe; del makeall.exe; \
+	del *.cc.*; del $(BASENAME).zip; del TAGS
+
+# package for the web, needs infozip
+$(BASENAME).zip: $(BASENAME).exe
+	mkdir $(BASENAME).tmp; \
+	for %I in ($(BINARY_PACKAGE_FILES)) do copy %I $(BASENAME).tmp; \
+	zip -9 $(BASENAME).zip $(BASENAME).tmp/*; \
+	for %I in ($(BASENAME).tmp\*.*) do del %I; \
+	rd $(BASENAME).tmp

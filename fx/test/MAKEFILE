@@ -1,0 +1,126 @@
+# adapt the definitions in ../global.mak
+# and the rules in rules.mak
+# you need to have NASM installed on your path
+
+#RELEASE=yes
+
+.PHONY: clean default
+default: TAGS cliptest.exe shading.exe sorttest.exe tsticlip.exe tgetkey.exe
+.IGNORE: clean
+
+include ../global.mak
+
+objects_shading = $(INCLDIR)/vbetwo.o $(INCLDIR)/vesalow.o \
+$(INCLDIR)/gformats.o $(INCLDIR)/palettes.o $(INCLDIR)/quitbug.o \
+$(INCLDIR)/fifo99.o $(INCLDIR)/fifo_low.o $(INCLDIR)/fileio.o \
+globshad.o shading.o
+
+objects_cliptest = $(INCLDIR)/vbetwo.o $(INCLDIR)/vesalow.o $(INCLDIR)/palettes.o \
+$(INCLDIR)/quitbug.o $(INCLDIR)/fifo99.o $(INCLDIR)/fifo_low.o $(INCLDIR)/grtext.o \
+globclip.o cliptest.o
+
+objects_sorttest = sorttest.o
+
+objects_univpal = $(INCLDIR)/palettes.o $(INCLDIR)/fileio.o \
+$(INCLDIR)/quitbug.o $(INCLDIR)/vesalow.o globupal.o univpal.o
+
+objects_tgetkey = tgetkey.o
+
+objects_tsticlip = $(INCLDIR)/vbetwo.o $(INCLDIR)/vesalow.o $(INCLDIR)/quitbug.o \
+$(INCLDIR)/gformats.o $(INCLDIR)/fileio.o $(INCLDIR)/palettes.o globiclp.o tsticlip.o
+
+objects_testexpr = $(INCLDIR)/function.o $(INCLDIR)/grtext.o \
+$(INCLDIR)/quitbug.o $(INCLDIR)/vbetwo.o $(INCLDIR)/vesalow.o \
+$(INCLDIR)/palettes.o globexpr.o testexpr.o
+
+LDFLAGS =
+CXXFLAGS = -I. -I../incl
+
+ifdef RELEASE
+MY_CXXFLAGS = $(GLOBAL_RELEASE_CXXFLAGS)
+else
+MY_CXXFLAGS = $(GLOBAL_DEBUG_CXXFLAGS)
+endif
+
+include ../rules.mak
+
+# include generates dependencies (less redundancy for modules)
+include $(objects_shading:.o=.d) $(objects_cliptest:.o=.d)
+
+shading.exe: $(objects_shading)
+	$(LD) -o $(LDFLAGS) $@ $(objects_shading)
+ifdef	RELEASE	
+	strip --strip-all $@
+else
+	@echo
+	@echo You are compiling a debug version. Uncomment RELEASE= in ./Makefile \
+	to build an optimized RELEASE-version
+endif
+
+cliptest.exe: $(objects_cliptest)
+	$(LD) -o $(LDFLAGS) $@ $(objects_cliptest)
+ifdef	RELEASE	
+	strip --strip-all $@
+else
+	@echo
+	@echo You are compiling a debug version. Uncomment RELEASE= in ./Makefile \
+	to build an optimized RELEASE-version
+endif
+
+sorttest.exe: $(objects_sorttest)
+	$(LD) -o $(LDFLAGS) $@ $(objects_sorttest)
+ifdef	RELEASE	
+	strip --strip-all $@
+else
+	@echo
+	@echo You are compiling a debug version. Uncomment RELEASE= in ./Makefile \
+	to build an optimized RELEASE-version
+endif
+
+univpal.exe: $(objects_univpal)
+	$(LD) -o $(LDFLAGS) $@ $(objects_univpal)
+ifdef	RELEASE	
+	strip --strip-all $@
+else
+	@echo
+	@echo You are compiling a debug version. Uncomment RELEASE= in ./Makefile \
+	to build an optimized RELEASE-version
+endif
+
+tgetkey.exe: $(objects_tgetkey)
+	$(LD) -o $(LDFLAGS) $@ $(objects_tgetkey)
+ifdef	RELEASE	
+	strip --strip-all $@
+else
+	@echo
+	@echo You are compiling a debug version. Uncomment RELEASE= in ./Makefile \
+	to build an optimized RELEASE-version
+endif
+
+tsticlip.exe: $(objects_tsticlip)
+	$(LD) -o $(LDFLAGS) $@ $(objects_tsticlip)
+ifdef	RELEASE	
+	strip --strip-all $@
+else
+	@echo
+	@echo You are compiling a debug version. Uncomment RELEASE= in ./Makefile \
+	to build an optimized RELEASE-version
+endif
+
+testexpr.exe: $(objects_testexpr)
+	$(LD) -o $(LDFLAGS) $@ $(objects_testexpr)
+ifdef	RELEASE	
+	strip --strip-all $@
+else
+	@echo
+	@echo You are compiling a debug version. Uncomment RELEASE= in ./Makefile \
+	to build an optimized RELEASE-version
+endif
+
+TAGS:
+	etags -t -i $(INCLDIR)/TAGS -o TAGS $(GLOBAL_ETAGS_FILES)
+
+clean:
+	del *.o; del  ..\incl\*.o; del shading.exe; del cliptest.exe; \
+	del univpal.exe; del sorttest.exe; del tsticlip.exe; del tgetkey.exe; \
+	del testexpr.exe; del TAGS; del *.cc.*

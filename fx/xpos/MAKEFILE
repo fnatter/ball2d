@@ -1,0 +1,189 @@
+# adapt the definitions in ../global.mak
+# and the rules in rules.mak
+# you need to have NASM installed on your path
+
+#RELEASE=yes
+BASENAME = xpos
+
+# command line won't get too long, because the dos shell won't
+# expand the wildcards
+BINARY_PACKAGE_FILES_1 = $(BASENAME).exe jaw2som.exe 3d2som.exe gem2som.exe \
+som2xyz.exe asc23d.exe playgod.exe
+BINARY_PACKAGE_FILES_2 = newmesh.bat newwld.bat shade*.pal \
+readme.htm ..\util\CWSDPMI.*
+BINARY_PACKAGE_FILES_3 = install.bat xpos.cfg *.som *.id *.spr
+
+BASECOLOR_FOR_MESHES_RGB = 255 255 255 # only for custom-meshes in gem-, 3d-, or jaw-format
+
+.PHONY: clean meshes all veryclean default
+default: TAGS $(BASENAME).exe jaw2som.exe 3d2som.exe gem2som.exe som2xyz.exe \
+playgod.exe meshes
+.IGNORE: clean veryclean
+
+all: $(BASENAME).zip
+
+include ../global.mak
+
+objects_xpos = $(INCLDIR)/vbetwo.o $(INCLDIR)/vesalow.o \
+$(INCLDIR)/fileio.o $(INCLDIR)/gformats.o $(INCLDIR)/grtext.o \
+$(INCLDIR)/palettes.o $(INCLDIR)/quitbug.o $(INCLDIR)/camera.o \
+$(INCLDIR)/fifo99.o $(INCLDIR)/fifo_low.o $(INCLDIR)/object3d.o \
+$(INCLDIR)/world3d.o $(INCLDIR)/vecmat.o globxpos.o xpos.o
+
+objects_som2xyz = $(INCLDIR)/fifo99.o $(INCLDIR)/fileio.o \
+$(INCLDIR)/gformats.o $(INCLDIR)/grtext.o $(INCLDIR)/fifo_low.o \
+$(INCLDIR)/palettes.o $(INCLDIR)/quitbug.o $(INCLDIR)/vbetwo.o \
+$(INCLDIR)/vesalow.o globs2xy.o som2xyz.o
+
+objects_gem2som = $(INCLDIR)/fileio.o $(INCLDIR)/fifo_low.o \
+$(INCLDIR)/fifo99.o $(INCLDIR)/quitbug.o glob_g2s.o gem2som.o
+
+objects_jaw2som = $(INCLDIR)/fileio.o $(INCLDIR)/fifo_low.o \
+$(INCLDIR)/fifo99.o $(INCLDIR)/quitbug.o glob_j2s.o jaw2som.o
+
+objects_3d2som = $(INCLDIR)/fileio.o $(INCLDIR)/fifo_low.o \
+$(INCLDIR)/fifo99.o $(INCLDIR)/quitbug.o glob3d2s.o 3d2som.o
+
+objects_playgod = $(INCLDIR)/fileio.o $(INCLDIR)/fifo_low.o \
+$(INCLDIR)/fifo99.o $(INCLDIR)/quitbug.o $(INCLDIR)/vecmat.o \
+glob_plg.o playgod.o
+
+LDFLAGS =
+CXXFLAGS = -I. -I../incl
+
+ifdef RELEASE
+MY_CXXFLAGS = $(GLOBAL_RELEASE_CXXFLAGS)
+else
+MY_CXXFLAGS = $(GLOBAL_DEBUG_CXXFLAGS)
+endif
+
+include ../rules.mak
+
+# include generates dependencies (less redundancy for modules)
+include $(objects_xpos:.o=.d) $(objects_3d2som:.o=.d) $(objects_playgod:.o=.d) \
+$(objects_jaw2som:.o=.d) $(objects_som2xyz:.o=.d) $(objects_gem2som:.o=.d)
+
+$(BASENAME).exe: $(objects_xpos)
+	$(LD) -o $(LDFLAGS) $@ $(objects_xpos)
+ifdef	RELEASE	
+	strip --strip-all $@
+else
+	@echo
+	@echo $(DEBUG_MSG)
+endif
+
+playgod.exe: $(objects_playgod)
+	$(LD) -o $(LDFLAGS) $@ $(objects_playgod)
+ifdef	RELEASE	
+	strip --strip-all $@
+else
+	@echo
+	@echo $(DEBUG_MSG)
+endif
+
+3d2som.exe: $(objects_3d2som)
+	$(LD) -o $(LDFLAGS) $@ $(objects_3d2som)
+ifdef	RELEASE	
+	strip --strip-all $@
+else
+	@echo
+	@echo $(DEBUG_MSG)
+endif
+
+gem2som.exe: $(objects_gem2som)
+	$(LD) -o $(LDFLAGS) $@ $(objects_gem2som)
+ifdef	RELEASE	
+	strip --strip-all $@
+else
+	@echo
+	@echo $(DEBUG_MSG)
+endif
+
+jaw2som.exe: $(objects_jaw2som)
+	$(LD) -o $(LDFLAGS) $@ $(objects_jaw2som)
+ifdef	RELEASE	
+	strip --strip-all $@
+else
+	@echo
+	@echo $(DEBUG_MSG)
+endif
+
+som2xyz.exe: $(objects_som2xyz)
+	$(LD) -o $(LDFLAGS) $@ $(objects_som2xyz)
+ifdef	RELEASE	
+	strip --strip-all $@
+else
+	@echo
+	@echo $(DEBUG_MSG)
+endif
+
+TAGS: $(INCLDIR)/TAGS $(wildcard *.cpp *.h *.asm *.c)
+	-etags -t -i $(INCLDIR)/TAGS -o TAGS $(GLOBAL_ETAGS_FILES)
+
+clean:
+	del *.o; del  ..\incl\*.o; del $(BASENAME).exe; del playgod.exe; \
+	del 3d2som.exe; del gem2som.exe; del jaw2som.exe; del som2xyz.exe; \
+        del *.cc.*; del $(BASENAME).zip; del TAGS; del *.xyz; del *.wld; \
+	del install.bat
+
+# this should not be run on the downloaded sources
+# because the directory meshes does not come with it
+veryclean: clean
+	del meshes\*.wld; del meshes\*.xyz
+
+
+# package for the web, needs infozip and cygwin
+$(BASENAME).zip: $(BINARY_PACKAGE_FILES_1) $(wildcard $(BINARY_PACKAGE_FILES_2)) \
+$(wildcard $(BINARY_PACKAGE_FILES_3))
+	mkdir $(BASENAME).tmp; \
+	for %I in ($(BINARY_PACKAGE_FILES_1)) do copy %I $(BASENAME).tmp; \
+	for %I in ($(BINARY_PACKAGE_FILES_2)) do copy %I $(BASENAME).tmp; \
+	for %I in ($(BINARY_PACKAGE_FILES_3)) do copy %I $(BASENAME).tmp; \
+	zip -9 $(BASENAME).zip $(BASENAME).tmp/*; \
+	for %I in ($(BASENAME).tmp\*.*) do del %I; \
+	rd $(BASENAME).tmp
+
+# the following is needed to convert / into \ (doesn't work, uses perl instead)
+
+som_files_other = $(addprefix meshes\, $(notdir $(basename $(wildcard meshes/*.som))))
+som_files_local = $(basename $(wildcard *.som))
+som_files = $(som_files_local) $(som_files_other)
+xyz_files = $(addsuffix .xyz, $(som_files))
+
+id_files_local = $(basename $(wildcard *.id))
+id_files_other = $(addprefix meshes\, $(notdir $(basename $(wildcard meshes/*.id))))
+id_files = $(id_files_local) $(id_files_other)
+wld_files = $(addsuffix .wld, $(id_files))
+
+# this doesn't work due to 122-byte dos-command-line limitation :-(
+# on bash it doesn't work either!!
+# som2xyz_commands = $(foreach somfile, $(som_files_local),\
+# del $(addsuffix .xyz, $(somfile))\nsom2xyz $(somfile).som $(addsuffix .xyz, $(somfile))\n)
+# playgod_commands = $(foreach idfile, $(id_files_local), \
+# del $(addsuffix .wld, $(idfile))\nplaygod $(addsuffix .id, $(idfile)) \
+# $(addsuffix .wld, $(idfile))\n)
+
+install.bat: $(addsuffix .id, $(id_files_local)) $(addsuffix .som, $(som_files_local))
+	perl helper.pl
+
+%.xyz: %.som
+	del $@; som2xyz $< $@
+
+%.wld: %.id
+	del $@; playgod $< $@
+
+%.som: %.gem
+	del $@; gem2som $< $@ $(BASECOLOR_FOR_MESHES_RGB)
+
+%.3d: %.asc
+	del $@; asc23d $< $@ 
+
+%.som: %.3d
+	del $@; 3d2som $< $@ $(BASECOLOR_FOR_MESHES_RGB)
+
+%.som: %.jaw
+	del $@; jaw2som $< $@ $(BASECOLOR_FOR_MESHES_RGB)
+
+meshes: playgod.exe som2xyz.exe $(xyz_files) $(wld_files)
+	echo finished regenerating mesh-files (.xyz) and world-files (.wld)
+

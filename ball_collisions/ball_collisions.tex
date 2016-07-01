@@ -1,0 +1,250 @@
+%% -*- latex -*-
+\documentclass[math,plainoldenumerate,afour]{homework}
+
+\usepackage[dvips]{graphics}
+\usepackage{psfrag}
+\usepackage[T1]{fontenc}
+\usepackage[cdot]{SIunits}
+
+\begin{document}
+
+\pagestyle{plain}
+\makebragbox{Dot product and the Application 2D Ball Collisions}{1999,2011}
+
+\section{Axioms}
+
+\newcommand*{\vect}[1]{\ensuremath{\overrightarrow{#1}}}
+
+\begin{description}
+\item[bilinear]
+  $\vect{a}\cdot(\vect{b}+\vect{c})=\vect{a}\cdot\vect{b}+\vect{a}\cdot\vect{c}$
+\item[?]
+  $\vect{b}\cdot(c\cdot\vect{a})=\vect{a}\cdot(c\cdot\vect{b})$
+\item[symmetric]
+  $\vect{a}\cdot\vect{b}=\vect{b}\cdot\vect{a}$
+\item[positive]
+  $\vect{x}^2>0$ ($\vect{x}\not=\vect{0}$)
+\end{description}
+
+Furthermore, the magnitude of vectors is defined using the dot product:
+$|\vect{x}|^2=\vect{x}^2$ and, because $\vect{x}^2>0$:
+$|\vect{x}|=\sqrt{\vect{x}^2}$.
+
+\section{Geometric explanation}
+\label{sec:dotproductgeometry}
+
+\begin{figure}[ht]
+  \Large
+  \psfrag{veca}{$\vect{a}$}
+  \psfrag{vecb}{$\vect{b}$}
+  \psfrag{vecbma}{$\vect{b}-\vect{a}$}
+  \psfrag{x1}{$x_1$}
+  \psfrag{x2}{$x_2$}
+  \psfrag{x3}{$x_3$}
+  \psfrag{theta}{$\theta$}
+  \begin{center}
+    \includegraphics*{dotproduct.eps}
+  \end{center}
+  \caption{geometric explanation of the dot product}
+  \label{fig:dotproductgeometry}
+\end{figure}
+
+According to the law of cosine (figure \ref{fig:dotproductgeometry}):
+\begin{multline*}
+  |\vect{b}-\vect{a}|^2=|\vect{a}|^2+|\vect{b}|^2-2|\vect{a}||\vect{b}|\cos(\theta)
+  \Leftrightarrow
+  |\vect{a}|^2+|\vect{b}|^2-|\vect{b}-\vect{a}|^2=2|\vect{a}||\vect{b}|\cos(\theta)
+  \Leftrightarrow \\
+  a_1^2+a_2^2+a_3^2+b_1^2+b_2^2+b_3^2
+  -a_1^2+2a_1b_1-b_1^2-a_2^2+2a_2b_2-b_2^2-a_3^2+2a_3b_3-b_3^2 = \\
+  2|\vect{a}||\vect{b}|\cos(\theta)
+  \Leftrightarrow
+  a_1b_1+a_2b_2+a_3b_3 = |\vect{a}||\vect{b}|\cos(\theta)
+\end{multline*}
+
+\section{2-Dimensional Ball Collision using Scalar Projection}
+
+\newcommand*{\vone}{\ensuremath{\vect{v_1}}}
+\newcommand*{\vtwo}{\ensuremath{\vect{v_2}}}
+\newcommand*{\vonei}{\ensuremath{\vect{v_{1_i}}}}
+\newcommand*{\vtwoi}{\ensuremath{\vect{v_{2_i}}}}
+\newcommand*{\los}{\ensuremath{\vect{C_1C_2}}}
+
+\begin{figure}[ht]
+  \Large
+  \psfrag{vecv1bef}{$\mathbf{\vonei}$}
+  \psfrag{vecv2bef}{$\mathbf{\vtwoi}$}
+  \psfrag{vecv1}{$\mathbf{\vone}$}
+  \psfrag{vecv2}{$\mathbf{\vtwo}$}
+  \psfrag{x}{$x$}
+  \psfrag{y}{$y$}
+  \begin{center}
+    \includegraphics*{Ballkollision.eps}
+  \end{center}
+  \caption{Example of an elastic 2-dimensional Ballcollision as an
+    application of scalar projection}
+  \label{fig:ballkollision}
+\end{figure}
+
+I won't start out explaining 1-dimensional collisions explicitly, because
+2D-collisions can be reduced to 1-dimensional collisions using scalar
+projections of the velocity-vectors\cite{mcasco}.
+
+$C_1(-10,0)$ is the center (of mass) of ball 1, $C_2(11/17)$ that of ball
+2.  The pre-collision velocity of ball 1 is
+$\vonei=\flatvectortwo{10}{5}\metrepersecondnp$ and that of ball 2 is
+$\vtwoi=\flatvectortwo{-15}{0}\metrepersecondnp$. The mass of ball 1 is
+$2.2\kilogram$ and ball 2 weighs $1.8\kilogram$.
+
+In order to find the momentum of each ball after the collision, you have to
+find the amount of each ball's velocity which acts towards the center of
+mass of the other ball.  And here is where the dot product comes in handy:
+We are looking for the component of \vonei or \vtwoi that is parallel to
+the connection of the centers of mass (``line of sight''), given by $\los =
+\flatvectortwo{21}{17}\metre$.  This is equivalent to the
+\underline{scalar projection of $\vonei$ and $\vtwoi$ on $\los$}.
+
+%% explain scalar projection
+The scalar projection of $\vect{a}$ onto $\vect{n}$ is defined as
+$\scalarprojectionof{\vect{a}}{\vect{n}}$ or $\vect{a}\cdot\vect{n}^0$. This
+can be understood easily by looking at the geometric definition of the dot
+product (section \ref{sec:dotproductgeometry}).  Note that the
+``axis''-vector (the one that will be projected on) must be normalized.
+Thus we must find the unit-vector of $\los$ ($\los^0$) which is
+$\frac{los}{\sqrt{730}}$ (the length should be $r_1 + r_2$, though).
+
+%% calculate scalar projection
+I define $v_{1_i}$ as the part of the velocity of ball 1 acting
+\emph{in line of sight} (\textbf{not $\mathbf{|\vonei|}$!}): \\
+$v_{1_i} = \scalarprojectionof{\vonei}{\los^0} =
+\flatvectortwo{10}{5}\cdot\flatvectortwo{21}{17}\frac{1}{\sqrt{730}} =
+\frac{295}{\sqrt{730}} = 10.9184\metrepersecondnp$.
+Similarly, $v_{2_i}$ is the velocity of ball 2 in line of sight:
+$v_{2_i} = \scalarprojectionof{\vtwoi}{\los^0} =
+\flatvectortwo{-15}{0}\cdot\flatvectortwo{21}{17}\frac{1}{\sqrt{730}} =
+\frac{-315}{\sqrt{730}} = -11.6587\metrepersecondnp$ (the negative
+value is okay since this is a projection).
+
+Having done this, we can now consider the collision as being
+one-dimensional if we choose the line of sight ($\los$) to be the one axis
+(which we just did). This implies that we need to express the
+post-collision velocities in this 1D-space before we can translate the
+results back to 2-space. Thus, I define $v_1$ and $v_2$ the post-collision
+velocity- components in line of sight (and again: \textbf{not
+  $\mathbf{|\vone|/|\vtwo|}$}).
+
+In the one-dimensional case, two conditions hold:
+\begin{equation}
+  \begin{split}
+    m_1\cdot v_{1_i}+m_2\cdot v_{2_i}=
+    m_1\cdot v_1+m_2\cdot v_2
+    \Leftrightarrow \\
+    m_1\cdot\left(v_{1_i}-v_1\right)=
+    m_2\cdot\left(v_2-v_{2_i}\right)
+    \quad\text{(conservation of linear momentum)}
+    \label{eq:conservationoflinmom}
+  \end{split}
+\end{equation}
+
+\begin{equation}
+  \begin{split}
+    \frac{1}{2}\cdot m_1\cdot v_{1_i}^2+\frac{1}{2}\cdot m_2\cdot v_{2_i}^2
+    =\frac{1}{2}\cdot m_1\cdot v_1^2+\frac{1}{2}\cdot m_2\cdot v_2^2
+    \Leftrightarrow \\
+    m_1\cdot\left(v_{1_i}^2-v_1^2\right)=
+    m_2\cdot\left(v_2^2-v_{2_i}^2\right)
+    \quad\text{(conservation of kinetic energy)} 
+    \label{eq:conservationofkinenergy}
+  \end{split}
+\end{equation}
+
+(\ref{eq:conservationoflinmom}) and (\ref{eq:conservationofkinenergy})
+yield a linear system with two equations and two unknowns ($v_1$ and $v_2$):
+\begin{multline*}
+  m_1 = m_2\frac{v_2-v_{2_i}}{v_{1_i}-v_1}
+  \logicaland
+  m_1 = m_2\frac{v_2^2-v_{2_i}^2}{v_{1_i}^2-v_1^2}
+  \Leftrightarrow
+  \frac{v_2-v_{2_i}}{v_{1_i}-v_1}
+  = \frac{(v_2-v_{2_i})\cdot(v_2+v_{2_i})}{(v_{1_i}-v_1)\cdot(v_{1_i}+v_1)}
+  \Leftrightarrow \\
+  v_{1_i}+v_1 = v_{2_i}+v_2
+  \Leftrightarrow
+  v_1(v_2) = v_2+v_{2_i}-v_{1_i}\logicaland
+  v_2(v_1) = v_1+v_{1_i}-v_{2_i}
+\end{multline*}
+
+Note that I assumed that $v_{1_i}-v_1\not=0$, $v_{1_i}^2-v_1^2 =
+(v_{1_i}-v_1)\cdot(v_{1_i}+v_1)\not=0$ and $v_2-v_{2_i}\not = 0$ (which is
+okay, because no collision would take place if the pre- and post-collision
+velocities were identical) and $m_2\not = 0$.
+
+Plug $v_1(v_2)$ into (\ref{eq:conservationoflinmom}) and solve for $v_2$:
+\begin{equation*}
+  \begin{split}
+    m_1\cdot(v_2+v_{2_i}-2v_{1_i})=m_2\cdot(v_{2_i}-v_2)
+    \Leftrightarrow
+    m_1v_2 +m_1v_{2_i}-2m_1v_{1_i}=m_2v_{2_i}-m_2v_2
+    \Leftrightarrow \\
+    v_2\cdot(m_1+m_2)=v_{2_i}\cdot(m_2-m_1)+2m_1v_{1_i}
+  \end{split}
+\end{equation*}
+
+Repeating the same procedure for $v_1$, you get:
+\begin{gather}
+  \label{eq:vone}
+  v_1(v_{1_i},v_{2_i},m_1,m_2)=
+  v_{1_i}\frac{m_1-m_2}{m_1+m_2}+v_{2_i}\frac{2m_2}{m_1+m_2} \\
+  \label{eq:vtwo}
+  v_2(v_{1_i},v_{2_i},m_1,m_2)=
+  v_{2_i}\frac{m_2-m_1}{m_1+m_2}+v_{1_i}\frac{2m_1}{m_1+m_2}
+\end{gather}
+
+At this point, a special case becomes obvious: What if both balls
+have equal mass (i.e pool, if you neglect non-linear momentum and friction) ?
+In that case, $v_1=v_{2_i}$ and $v_2=v_{1_i}$.
+%% ... ?
+
+For our example, plugging into (\ref{eq:vone}) results in: \\
+$v_1=\frac{295}{\sqrt{730}}\metrepersecondnp\cdot\frac{1}{10}
+-\frac{315}{\sqrt{730}}\metrepersecondnp\cdot\frac{9}{10}
+=\frac{-254}{\sqrt{730}}\metrepersecondnp=-9.40096\metrepersecondnp$
+and from (\ref{eq:vtwo}): \\
+$v_2=-\frac{315}{\sqrt{730}}\metrepersecondnp\cdot-\frac{1}{10}+
+\frac{295}{\sqrt{730}}\metrepersecondnp\cdot 1.1
+=\frac{356}{\sqrt{730}}\metrepersecondnp=13.1762\metrepersecondnp$
+(again, negative signs are valid, because $v_1$ and $v_2$ only 
+represent the ``intensity'' of each ball's velocity in line of sight).
+
+In a 1D-collision, I'd be done now: $v_1$ would be the resulting velocity
+of ball 1 and $v_2$ that of ball 2. But the 1D-case is a special case
+in this respect (see below); for the two- or three-dimensional case,
+you have to find the difference between pre- and post-collision velocity
+in 1D (``change in line of sight -velocity''), project that onto $\los$
+to get the 2-dimensional change in velocity, and add to the pre-collision
+velocity to get the final, post-collision velocity (in the 1D-case, this
+step is unnecessary because $v_{1_i}+\triangle v_1=v_{1_i}+v_1-v_{1_i}=v_1$).
+
+$\los^0 = \cvectortwo{21\cdot {730}^{-0.5}}{17\cdot {730}^{-0.5}}
+=\flatvectortwo{0.7772}{0.6292}$.
+Consequently, the change in line of sight-velocity of ball 1 projected
+on $\los$ is:
+$\overrightarrow{\triangle v_1}=\los^0\cdot(v_1-v_{1_i})
+=\flatvectortwo{-15.79221}{-12.78494}$,
+and therefore the post-collision velocity of ball 1 is:
+$\vone = \vonei + \overrightarrow{\triangle v_1}
+=\flatvectortwo{-5.79221}{-7.78494}\metrepersecondnp$.
+The post-collision velocity of ball 2 can be calculated in the same way:
+$\overrightarrow{\triangle v_2}=\los^0\cdot(v_2-v_{2_i})
+=\flatvectortwo{19.30168}{15.62612}$
+und $\vect{v_2}=\vect{v_{2_i}}+\overrightarrow{\triangle v_2}
+=\flatvectortwo{4.30168}{15.62612}\metrepersecondnp$.
+
+\begin{thebibliography}{1}
+\bibitem{mcasco} \texttt{http://www.mcasco.com/p1lmc.html}
+\end{thebibliography}
+
+\end{document}
+% Local Variables:
+% compile-command: "make ball_collisions.pdf"
+% End:

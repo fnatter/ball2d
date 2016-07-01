@@ -1,0 +1,46 @@
+<html>
+<head>
+<title>Readme for Func3D</title>
+</head>
+<body>
+
+<table bgcolor = "red">
+<tr>
+<td>If you are running Windows, please start this program only in <b>fullscreen-mode</b>
+(Alt+Enter at the DOS-Prompt).</td>
+</tr>
+</table>
+
+<h2>Introduction</h2>
+<p>
+Func3D works by approximating a 3d-function by a number of polygons (specified by the "steps"-value)
+which you can then look@ from an arbitrary viewpoint. You can choose any resolution that your VBE 2.0
+supports in the fx3d.cfg-file. When you start func3d.exe you'll be in the fullscreen-mode.
+Here you can "walk-around" in the "world" of the function
+with the movement similar to Descent:<br>
+Use a to accelerate forward, y to accelerate backward, UP/DOWN Arrow to pitch up/down and
+LEFT/RIGHT Arrow to turn left/right. 
+Use the tab-key to enter console-mode. Here you can set a new function or change appearance values
+and the coordinates of the drawing plane.
+<em>Type ? for a list of commands at runtime.</em>
+</p>
+
+<h2>Common commands</h2>
+<ul>
+<li>use <code>f = <function></code> to assign a function
+<li>use <code>fov = <FOV></code>, where FOV is the new Field of View angle (0.0 <= FOV <= 180.0)
+<li>use <code>type = <facetype></code>, where facetype is one of the following: wireframe/flat/gouraud/textured/gouraud+textured
+<li>use <code>steps = <steps></code> to change the number of steps when scanning. the number of polygons will be nSteps^2, and the number of Vertices will be (nSteps + 1)^2
+<li>use <code>range(<left>, <right>, <bottom>, <top>)</code> to specify the range of the base plane. i.e.: <code>range(-5, 5, -5, 5)</code>
+<li>use <code>eval(<expression>)</code> to evaluate an expression. i.e: <code>eval(sin(3/4*pi))</code>
+<li>
+</ul>
+
+<p>
+I used <a href = "http://www.ndh.net/home/natter/djgpp.htm">DJGPP</a>, a <em>free</em> 32bit-PM development environment
+for (extended) DOS applications, to create this program.<br>
+Take a look at <a href = "http://www.ndh.net/home/natter/">my homepage</a>.
+</p>
+
+</body>
+</html>

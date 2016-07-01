@@ -1,0 +1,46 @@
+# this will build all projects in a non-debug (release) version
+# look at global.mak and adapt at least ROOT!
+# you can adapt compiler switches in the subdirectory Makefiles
+
+.PHONY: all clean package_src package_bin backup veryclean
+.DEFAULT: all
+.IGNORE: clean veryclean
+
+include global.mak
+
+projects = ball2d makebm funcyfx func3d xpos
+
+# $(MAKE) doesn't work (contains UNIX path)
+
+export RELEASE=yes # always make release versions if all are built
+
+all: clean
+	for %I in ($(projects) test) do make -C %I
+
+clean:
+	for %I in ($(projects) test util) do make -C %I clean
+
+veryclean: clean
+	for %I in (. incl util wave $(projects)) do del *.d
+
+package_bin: clean
+	for %I in ($(projects)) do make -C %I %I.zip; \
+	for %I in ($(projects)) do del \homepage\djgpp\%I.zip; \
+        for %I in ($(projects)) do move %I\%I.zip \homepage\djgpp\%I.zip
+
+package_src: veryclean
+	cd ..; zip -r -9 djsource.zip fx -x fx/dibs/* fx/descent/* \
+	fx/3ddemo.zip fx/xpos/*/* fx/funcyfx/hist/* fx/wave/* fx/sshots/*; \
+	del \homepage\djgpp\djsource.zip; \
+	move djsource.zip \homepage\djgpp\djsource.zip
+
+backup: clean
+	cd ..; \
+	del dj_sources.zip; \
+	zip -r -9 dj_sources.zip fx
+
+
+
+
+
+

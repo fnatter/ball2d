@@ -1,0 +1,49 @@
+7
+Light: 0.0 0.0 -1.0
+CameraPos: 0.0 0.0 50.0
+CameraXAxis: 1.0 0.0 0.0
+CameraYAxis: 0.0 1.0 0.0
+CameraZAxis: 0.0 0.0 1.0
+FOV: 170.0
+cube1.xyz
+Pos: 0.0 0.0 -100.0
+Origin: 0.0 0.0 0.0
+Energy: 0.0 0.0 0.0
+Size: 50.0
+Facetype: shaded+textured
+cube2.xyz
+Pos: 0.0 0.0 100.0
+Origin: 0.0 0.0 0.0
+Energy: 0.0 0.0 0.0
+Size: 50.0
+Facetype: shaded+textured
+cube3.xyz
+Pos: -100.0 0.0 0.0
+Origin: 0.0 0.0 0.0
+Energy: 0.0 -0.0 -0.0
+Size: 50.0
+Facetype: shaded+textured
+cube4.xyz
+Pos: 100.0 0.0 0.0
+Origin: 0.0 0.0 0.0
+Energy: 0.0 -0.0 0.0
+Size: 50.0
+Facetype: shaded+textured
+cube5.xyz
+Pos: 0.0 -100.0 0.0
+Origin: 0.0 0.0 0.0
+Energy: 0.0 -0.0 -0.0
+Size: 50.0
+Facetype: shaded+textured
+cube6.xyz
+Pos: 0.0 100.0 0.0
+Origin: 0.0 0.0 0.0
+Energy: 0.0 -0.0 -0.0
+Size: 50.0
+Facetype: shaded+textured
+cube7.xyz
+Pos: 0.0 0.0 0.0
+Origin: 0.0 0.0 0.0
+Energy: 0.0 -0.0 -0.0
+Size: 50.0
+Facetype: shaded+textured

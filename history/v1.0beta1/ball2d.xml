@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<screensaver name="ball2d" _label="Ball2D">
+
+  <command arg="-root"/>
+  
+  <number id="delay" type="slider" arg="-delay %"
+          _label="Frame rate" _low-label="Low" _high-label="High"
+          low="0" high="50000" default="20000"
+          convert="invert"/>
+
+  <number id="count" type="slider" arg="-count %"
+          _label="# of balls" _low-label="1" _high-label="100"
+           low="1" high="100" default="20"/>
+
+  <boolean id="showFutureCollisions" _label="Show future collisions"
+           arg-unset="-showFutureCollisions False"/>
+
+  <boolean id="tiny" _label="Generate small balls"
+           arg-set="-tiny True"/>
+
+  <boolean id="zombies" _label="Zombies (sudden direction change for all)"
+           arg-set="-zombies True"/>
+
+  <boolean id="slowStart" _label="Slow motion at the beginning"
+           arg-set="-slowStart True"/>
+
+  <boolean id="showVelocityVectors" _label="Show velocity vectors"
+           arg-unset="-showVelocityVectors False"/>
+
+  <boolean id="corners" _label="Place balls on corners initially (&lt;=30 Balls)"
+           arg-set="-corners True"/>
+
+  <boolean id="debian" _label="Place balls like debian logo initially"
+           arg-set="-debian True"/>
+
+  <boolean id="startGrid" _label="Start with balls arranged on a grid"
+           arg-set="-startGrid True"/>
+
+  <string id="startAngles" _label="startAngles (all|right|angle[,angle]*)"
+          arg="-startAngles %"/>
+
+  <boolean id="obstacles2" _label="With rectangular obstacles arranged in a grid"
+           arg-set="-obstacles2 True"/>
+
+  <boolean id="1D" _label="Limit to 1D collisions (initially)" arg-set="-1D True"/>
+
+  <boolean id="showfps" _label="Show frame rate" arg-set="-fps"/>
+
+<!--  
+  <number id="ncolors" type="slider" arg="-ncolors %"
+            _label="Number of colors" _low-label="Two" _high-label="Many"
+            low="1" high="255" default="20"/>
+-->
+
+  <_description>
+    Displays balls on a 2D plane with mass proportional to size,
+    which collide (mostly) physically correct. Drop me a mail
+    if you want to know how this works (fnatter@gmx.net).
+  </_description>
+</screensaver>

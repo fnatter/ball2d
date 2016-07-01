@@ -1,0 +1,59 @@
+7
+Light: 0.0 0.0 -1.0
+CameraPos: 0.0 0.0 50.0
+CameraXAxis: 1.0 0.0 0.0
+CameraYAxis: 0.0 1.0 0.0
+CameraZAxis: 0.0 0.0 1.0
+FOV: 170.0
+cubelin.xyz
+Pos: 0.0 0.0 -100.0
+Origin: 0.0 0.0 0.0
+Energy: 0.0 0.0 0.0
+Size: 50.0
+Facetype: gouraud
+cubedl.xyz
+Pos: 0.0 0.0 100.0
+Origin: 0.0 0.0 0.0
+Energy: 0.0 0.0 0.0
+Size: 50.0
+Facetype: gouraud
+cubepat.xyz
+Pos: -100.0 0.0 0.0
+Origin: 0.0 0.0 0.0
+Energy: 0.0 -0.0 -0.0
+Size: 50.0
+Facetype: gouraud
+cubefam.xyz
+Pos: 100.0 0.0 0.0
+Origin: 0.0 0.0 0.0
+Energy: 0.0 -0.0 0.0
+Size: 50.0
+Facetype: gouraud
+cubefam2.xyz
+Pos: 0.0 -100.0 0.0
+Origin: 0.0 0.0 0.0
+Energy: 0.0 -0.0 -0.0
+Size: 50.0
+Facetype: gouraud
+cubepat2.xyz
+Pos: 0.0 100.0 0.0
+Origin: 0.0 0.0 0.0
+Energy: 0.0 -0.0 -0.0
+Size: 50.0
+Facetype: gouraud
+cubepat3.xyz
+Pos: 0.0 0.0 0.0
+Origin: 0.0 0.0 0.0
+Energy: 0.0 -0.0 -0.0
+Size: 50.0
+Facetype: gouraud
+cubepat4.xyz
+Pos: 100.0 100.0 0.0
+Origin: 0.0 0.0 0.0
+Energy: 0.0 -0.0 -0.0
+Size: 50.0
+Facetype: gouraud
+
+
+
+

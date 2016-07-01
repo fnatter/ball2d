@@ -1,0 +1,60 @@
+# adapt the definitions in ../global.mak
+# and the rules in rules.mak
+# you need to have NASM installed on your path
+
+#RELEASE=yes
+BASENAME = funcyfx
+BINARY_PACKAGE_FILES = $(BASENAME).exe console.spr readme.htm fx.cfg \
+..\util\CWSDPMI.*
+
+.PHONY: clean all default
+default: TAGS $(BASENAME).exe
+.IGNORE: clean
+
+all: $(BASENAME).zip
+
+include ../global.mak
+
+objects = $(INCLDIR)/vbetwo.o $(INCLDIR)/vesalow.o \
+$(INCLDIR)/grtext.o $(INCLDIR)/palettes.o $(INCLDIR)/quitbug.o \
+$(INCLDIR)/fifo_low.o $(INCLDIR)/fifo99.o $(INCLDIR)/function.o \
+globals.o funcyfx.o
+
+LDFLAGS =
+CXXFLAGS = -I. -I../incl
+
+ifdef RELEASE
+MY_CXXFLAGS = $(GLOBAL_RELEASE_CXXFLAGS)
+else
+MY_CXXFLAGS = $(GLOBAL_DEBUG_CXXFLAGS)
+endif
+
+include ../rules.mak
+
+# include generates dependencies (less redundancy for modules)
+include $(objects:.o=.d)
+
+$(BASENAME).exe: $(objects)
+	$(LD) -o $(LDFLAGS) $@ $(objects)
+ifdef	RELEASE	
+	strip --strip-all $@
+else
+	@echo
+	@echo $(DEBUG_MSG)
+endif
+
+TAGS: $(INCLDIR)/TAGS $(wildcard *.cpp *.h *.asm *.c)
+	-etags -t -i $(INCLDIR)/TAGS -o TAGS $(GLOBAL_ETAGS_FILES)
+
+clean:
+	del *.o; del  ..\incl\*.o; del $(BASENAME).exe; del *.cc.*; \
+	del $(BASENAME).zip; del TAGS
+
+# package for the web, needs infozip
+$(BASENAME).zip: $(BASENAME).exe
+	mkdir $(BASENAME).tmp; \
+	for %I in ($(BINARY_PACKAGE_FILES)) do copy %I $(BASENAME).tmp; \
+	zip -9 $(BASENAME).zip $(BASENAME).tmp/*; \
+	for %I in ($(BASENAME).tmp\*.*) do del %I; \
+	rd $(BASENAME).tmp
+

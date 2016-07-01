@@ -1,0 +1,10 @@
+Saucer from THE DAY THE EARTH STOOD STILL and conversions :
+	
+	This mesh was modeled inb MAXr2 and converted to trueSpace and LightWave formats.  No specific texture is used.  The surface should be a shiney, reflective, silver hue.
+
+	Saucer from THE DAY THE EARTH STOOD STILL is Copyright (C) 1998 by Geo. W. Proctor as an artist's interpretation of an existing work of art.  It is meant for individual entertainment value only and may not be used commerically in any way, manner, or fashion.  Distribution of this mesh without artist's written permission is strictly prohibited in any manner or media whatsoever, that includes CD-ROMs, web sites, and computer bulletin boards.
+
+	THE DAY THE EARTH STOOD STILL1 is Copyright (C) 1979 by Twentieth Century Fox.
+	
+Geo. W. Proctor
+gwp1@airmail.net

@@ -1,0 +1,261 @@
+\documentclass[nativeinput,german,math,plainoldenumerate,afour]{homework}
+
+\usepackage[dvips]{graphics}
+\usepackage{psfrag}
+\usepackage[T1]{fontenc}
+
+\begin{document}
+
+                                % TODO:
+                                % - use comp_x y
+                                % - translate to english
+
+\makebragbox{Skalarprodukt: Axiome, geometr. Erklärung und Anwendungen}
+{1999}
+
+\section{Axiome}
+
+\begin{description}
+\item[Distributivgesetz] 
+  $\vec{a}\cdot(\vec{b}+\vec{c})=\vec{a}\cdot\vec{b}+\vec{a}\cdot\vec{c}$
+\item[Gemischtes Assoziativgesetz]
+  $\vec{b}\cdot(c\cdot\vec{a})=\vec{a}\cdot(c\cdot\vec{b})$
+\item[Kommutativgesetz] $\vec{a}\cdot\vec{b}=\vec{b}\cdot\vec{a}$
+\item[positiv definit] $\vec{x}^2>0$ ($\vec{x}\not=\vec{0}$)
+\end{description}
+
+Ausserdem wird dadurch die L\"ange eines Vektors definiert:
+$|\vec{x}|^2=\vec{x}^2$ und wegen $\vec{x}^2>0$ auch
+$|\vec{x}|=\sqrt{\vec{x}^2}$.
+
+\section{geometrische Einf\"uhrung}
+
+\begin{figure}[ht]
+  \Large
+  \psfrag{veca}{$\vec{a}$}
+  \psfrag{vecb}{$\vec{b}$}
+  \psfrag{vecbma}{$\vec{b}-\vec{a}$}
+  \psfrag{x1}{$x_1$}
+  \psfrag{x2}{$x_2$}
+  \psfrag{x3}{$x_3$}
+  \psfrag{theta}{$\theta$}
+  \begin{center}
+    \includegraphics*{dotproduct.eps}
+  \end{center}
+  \caption{geometrische Einf\"uhrung des Skalarproduktes}
+  \label{fig:dotproductgeometry}
+\end{figure}
+
+Nach dem Kosinussatz gilt (siehe Abbildung \ref{fig:dotproductgeometry}):
+
+\begin{multline*}
+  |\vec{b}-\vec{a}|^2=|\vec{a}|^2+|\vec{b}|^2-2|\vec{a}||\vec{b}|\cos(\theta)
+  \Leftrightarrow
+  |\vec{a}|^2+|\vec{b}|^2-|\vec{b}-\vec{a}|^2=2|\vec{a}||\vec{b}|\cos(\theta)
+  \Leftrightarrow \\
+  a_1^2+a_2^2+a_3^2+b_1^2+b_2^2+b_3^2
+  -a_1^2+2a_1b_1-b_1^2-a_2^2+2a_2b_2-b_2^2-a_3^2+2a_3b_3-b_3^2= \\
+  2|\vec{a}||\vec{b}|\cos(\theta)
+  \Leftrightarrow
+  a_1b_1+a_2b_2+a_3b_3=|\vec{a}||\vec{b}|\cos(\theta)
+\end{multline*}
+
+\section{Anwendungen}
+
+\subsection{Pythagoras-Beweis}
+
+$\vec{c}=\vec{a}+\vec{b}$ ist die Hypothenuse, 
+$\vec{b}\cdot\vec{a}=0$:
+\texttt{Behauptung:} $\vec{a}^2+\vec{b}^2=\vec{c}^2$
+
+$\vec{c}=\vec{a}+\vec{b}$ ist wahr, quadriere diese Gleichung:
+$\vec{c}^2=\vec{a}^2+2\vec{a}\vec{b}+\vec{c}^2
+\Leftrightarrow
+\vec{c}^2=\vec{a}^2+\vec{b}^2$ -- geht das mit rechten Dingen zu ?
+
+\subsection{Skalarprojektion und Ballkollisionen}
+
+\begin{figure}[ht]
+  \Large
+  \psfrag{vecv1bef}{$\mathbf{\vec{v_{1_i}}}$}
+  \psfrag{vecv2bef}{$\mathbf{\vec{v_{2_i}}}$}
+  \psfrag{vecv1}{$\mathbf{\vec{v_1}}$}
+  \psfrag{vecv2}{$\mathbf{\vec{v_2}}$}
+  \psfrag{x}{$x$}
+  \psfrag{y}{$y$}
+  \begin{center}
+    \includegraphics*{Ballkollision.eps}
+  \end{center}
+  \caption{elastische 2-dimensionale Ballkollision
+    als Anwendung der Skalarprojektion}
+  \label{fig:ballkollision}
+\end{figure}
+
+Abbildung \ref{fig:ballkollision}: Beispiel f\"ur eine elastische
+Ballkollision in der Ebene.
+
+Ich fange hier nicht mit einem Beispiel von 1-dimensionalen Kollisionen an,
+weil man -- so wie ich es hier mache -- eine 2D-Kollision mittels
+Skalarprojektion ohnehin mit den Methoden f\"ur den 1D-Fall berechnet.
+
+$M_1(-10,0)$ ist der Mittelpunkt (=Massenschwerpunkt)
+von Ball 1, $M_2(11/17)$ der von Ball 2,
+$\vec{v_{1_i}}=\cvectortwo{10}{5}\frac{m}{s}$ ist
+die Geschwindigkeit von Ball 1 vor der Kollision und
+$\vec{v_{2_i}}=\cvectortwo{-15}{0}\frac{m}{s}$
+die von Ball 2. Die Masse von Ball 1 ist $2.2$ kg und
+Ball 2 wiegt $1.8$ kg.
+
+Um herauszufinden, welchen Impuls die B\"alle nach der Kollision haben
+werden, muss man jeweils den Anteil der Geschwindigkeit eines Balles finden,
+der direkt auf den anderen Ball wirkt. Also sucht man den Anteil von
+$\vec{v_{1_i}}$ bzw. $\vec{v_{2_i}}$, der parallel zur Verbindung
+der beiden Massenschwerpunkte
+($\overrightarrow{M_1M_2}=\cvectortwo{21}{17}$, \glqq Sichtlinie\grqq) ist.
+Das entspricht der \emph{Skalarprojektion von
+  $\vec{v_{1_i}}$ bzw. $\vec{v_{2_i}}$ auf $\overrightarrow{M_1M_2}$}.
+Daf\"ur braucht man zun\"achst die L\"ange von $\overrightarrow{M_1M_2}$,
+welche gleich der Summe der beiden Radien
+oder $\sqrt{21^2+17^2}=\sqrt{730}$ ist.
+
+%% calculate scalar projection
+Ich definiere $v_{1_i}$ als den Geschwindigkeitsbetrag von Ball 1
+\emph{in Sichtline} (\textbf{nicht als $\mathbf{|\vec{v_{1_i}}|}$!}): \\
+$v_{1_i}=\frac{\vec{v_{1_i}}\cdot\overrightarrow{M_1M_2}}
+{|\overrightarrow{M_1M_2}|}=\frac{295}{\sqrt{730}}=10.9184\frac{m}{s}$.
+Genauso wird $v_{2_i}$ als Geschwindigkeitsbetrag von Ball 2
+\emph{in Sichtlinie} definiert:
+$v_{2_i}=\frac{\vec{v_{2_i}}\cdot\overrightarrow{M_1M_2}}
+{|\overrightarrow{M_1M_2}|}=\frac{-315}{\sqrt{730}}=-11.6587\frac{m}{s}$.
+
+Indem man die Geschwindigkeitsbetr\"age
+\emph{in Sichtlinie} findet, kann man eine 2D (oder 3D) Kollision als
+eindimensional ansehen, wenn die eine Dimension entlang der Sichtlinie l\"auft.
+Weil man einen Zwischenschritt \"uber eindimensionale Kollisionen geht,
+muss man auch $v_1$ als den resultierenden Geschwindigkeitsbetrag
+\emph{in Sichtlinie} (wieder: \textbf{nicht als $\mathbf{|\vec{v_1}|}$})
+definieren, dasselbe gilt f\"ur $v_2$.
+
+F\"ur den eindimensionalen Fall gelten zwei Bedingungen:
+
+\begin{equation}
+  \begin{split}
+    m_1\cdot v_{1_i}+m_2\cdot v_{2_i}=
+    m_1\cdot v_1+m_2\cdot v_2
+    \Leftrightarrow \\
+    m_1\cdot\left(v_{1_i}-v_1\right)=
+    m_2\cdot\left(v_2-v_{2_i}\right)
+    \quad\text{(Impulserhaltungssatz)}
+    \label{eq:conservationoflinmom}
+  \end{split}
+\end{equation}
+
+\begin{equation}
+  \begin{split}
+    \frac{1}{2}\cdot m_1\cdot v_{1_i}^2+\frac{1}{2}\cdot m_2\cdot v_{2_i}^2
+    =\frac{1}{2}\cdot m_1\cdot v_1^2+\frac{1}{2}\cdot m_2\cdot v_2^2
+    \Leftrightarrow \\
+    m_1\cdot\left(v_{1_i}^2-v_1^2\right)=
+    m_2\cdot\left(v_2^2-v_{2_i}^2\right)
+    \quad\text{(Erhaltung der kinet. Energie)} 
+    \label{eq:conservationofkinenergy}
+  \end{split}
+\end{equation}
+
+Mit (\ref{eq:conservationoflinmom}) und
+(\ref{eq:conservationofkinenergy}) habe ich ein Gleichungssystem aus zwei
+Gleichungen und zwei Unbekannten (Geschwindigkeitsbetrag von Ball 1 nach
+der Kollision \emph{in Sichtlinie} ($v_1$) und Geschwindigkeitsbetrag
+von Ball 2 nach der Kollision \emph{in Sichtlinie} ($v_2$)):
+\begin{multline*}
+  m_1=m_2\frac{v_2-v_{2_i}}{v_{1_i}-v_1}
+  \;\wedge\;
+  m_1=m_2\frac{v_2^2-v_{2_i}^2}{v_{1_i}^2-v_1^2}
+  \Leftrightarrow
+  \frac{v_2-v_{2_i}}{v_{1_i}-v_1}
+  =\frac{(v_2-v_{2_i})\cdot(v_2+v_{2_i})}{(v_{1_i}-v_1)\cdot(v_{1_i}+v_1)}
+  \Leftrightarrow \\
+  v_{1_i}+v_1=v_{2_i}+v_2
+  \Leftrightarrow
+  v_1(v_2)=v_2+v_{2_i}-v_{1_i}\;\wedge\;
+  v_2(v_1)=v_1+v_{1_i}-v_{2_i}
+\end{multline*}
+dabei habe ich vorrausgesetzt, dass $v_{1_i}-v_1\not=0$,
+$v_{1_i}^2-v_1^2=(v_{1_i}-v_1)\cdot(v_{1_i}+v_1)\not=0$,
+$v_2-v_{2_i}\not=0$
+(denn wenn die Geschwindigkeitsbetr\"age in Sichtlinie
+vor- und nach der Kollision gleich w\"aren,
+kann keine Kollision stattgefunden haben) und $m_2\not=0$.
+
+setze $v_1(v_2)$ in (\ref{eq:conservationoflinmom}) ein und l\"ose nach
+$v_2$ auf:
+
+\begin{equation*}
+  \begin{split}
+    m_1\cdot(v_2+v_{2_i}-2v_{1_i})=m_2\cdot(v_{2_i}-v_2)
+    \Leftrightarrow
+    m_1v_2 +m_1v_{2_i}-2m_1v_{1_i}=m_2v_{2_i}-m_2v_2
+    \Leftrightarrow \\
+    v_2\cdot(m_1+m_2)=v_{2_i}\cdot(m_2-m_1)+2m_1v_{1_i}
+  \end{split}
+\end{equation*}
+
+wenn man dasselbe auch f\"ur $v_1$ macht, bekommt man:
+\begin{gather}
+  \label{eq:vone}
+  v_1(v_{1_i},v_{2_i},m_1,m_2)=
+  v_{1_i}\frac{m_1-m_2}{m_1+m_2}+v_{2_i}\frac{2m_2}{m_1+m_2} \\
+  \label{eq:vtwo}
+  v_2(v_{1_i},v_{2_i},m_1,m_2)=
+  v_{2_i}\frac{m_2-m_1}{m_1+m_2}+v_{1_i}\frac{2m_1}{m_1+m_2}
+\end{gather}
+
+Ein Spezialfall offenbart sich hier: Was ist wenn beide B\"alle
+die gleiche Masse haben ? (z.B. beim Billiard, wenn man nicht-linearen
+Impuls und Reibung vernachl\"assigt)
+F\"ur den Fall ist $v_1=v_{2_i}$ und $v_2=v_{1_i}$.
+%% ... ?
+
+Im Beispiel oben erh\"alt man durch einsetzen in (\ref{eq:vone}): \\
+$v_1=\frac{295}{\sqrt{730}}\frac{m}{s}\cdot\frac{1}{10}
+-\frac{315}{\sqrt{730}}\frac{m}{s}\cdot\frac{9}{10}
+=\frac{-254}{\sqrt{730}}\frac{m}{s}=-9.40096\frac{m}{s}$
+und aus (\ref{eq:vtwo}) erh\"alt man: \\
+$v_2=-\frac{315}{\sqrt{730}}\frac{m}{s}\cdot-\frac{1}{10}+
+\frac{295}{\sqrt{730}}\frac{m}{s}\cdot 1.1
+=\frac{356}{\sqrt{730}}\frac{m}{s}=13.1762\frac{m}{s}$
+(negative Vorzeichen sind hier okay, da $v_1$ und $v_2$ ja nur
+den Geschwindigkeitsbetrag in Sichtlinie angeben).
+
+Im 1D-Fall w\"are ich jetzt schon fertig, $v_1$ w\"are die resultierende
+Geschwindigkeit von Ball 1 und $v_2$ die von Ball 2. Das ist aber nur
+1D-Fall so, weil der 1D-Fall in dieser Hinsicht einen Sonderfall darstellt
+(siehe unten); Im 2- oder 3-Dimensionalen Fall muss man
+zun\"achst die \"Anderung des Geschwindigkeitsbetrages in Sichtlinie
+berechnen, diese dann auf den Sichtlinien-Vektor
+($\overrightarrow{M_1M_2}$) projizieren und das Ergebnis zum urspr\"unglichen
+Geschwindigkeitsvektor ($\vec{v_{1_i}}$ bzw. $\vec{v_{2_i}}$) addieren
+um den Geschwindigkeitsvektor nach der Kollision ($\vec{v_1}$ bzw $\vec{v_2}$)
+zu erhalten (beim 1-dimensionalen Fall entf\"allt dieser Schritt, weil
+$v_{1_i}+\triangle v_1=v_{1_i}+v_1-v_{1_i}=v_1$).
+Der Normalenvektor von $\overrightarrow{M_1M_2}$ ist
+$\overrightarrow{{M_1M_2}^0}=
+\cvectortwo{21\cdot {730}^{-0.5}}{17\cdot {730}^{-0.5}}
+=\cvectortwo{0.7772}{0.6292}$.
+Die \"Anderung des Geschwindigkeitsbetrages von Ball 1 projiziert
+auf $\overrightarrow{M_1M_2}$ ist also:
+$\overrightarrow{\triangle v_1}=\overrightarrow{{M_1M_2}^0}\cdot(v_1-v_{1_i})
+=\cvectortwo{-15.79221}{-12.78494}$
+und damit ist die Geschwindigkeit von Ball 1 nach der Kollision: \\
+$\vec{v_1}=\vec{v_{1_i}}+\overrightarrow{\triangle v_1}
+=\cvectortwo{-5.79221}{-7.78494}\frac{m}{s}$.
+Genauso ist 
+$\overrightarrow{\triangle v_2}=\overrightarrow{{M_1M_2}^0}\cdot(v_2-v_{2_i})
+=\cvectortwo{19.30168}{15.62612}$
+und $\vec{v_2}=\vec{v_{2_i}}+\overrightarrow{\triangle v_2}
+=\cvectortwo{4.30168}{15.62612}\frac{m}{s}$.
+
+siehe http://www.mcasco.com/p1lmc.html f\"ur mehr Erkl\"arungen \"uber
+die Physik.
+
+\end{document}

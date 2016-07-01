@@ -1,0 +1,2 @@
+TAGS: $(wildcard *.c *.cpp *.asm *.h)
+	-etags -t $(wildcard *.asm *.c *.h *.cpp)

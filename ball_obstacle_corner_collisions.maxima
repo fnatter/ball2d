@@ -1,0 +1,17 @@
+# (cx,cy) is the obstacle corner, p+t*v is the ball's path
+solve([(px+t*vx - cx)^2 + (py+t*vy -cy)^2 = r^2], t);
+
+t=-(sqrt((r^2-px^2+2*cx*px-cx^2)*vy^2+((2*px-2*cx)*py-2*cy*px+2*cx*cy)*vx*vy+(r^2-py^2+2*cy*py-cy^2)*vx^2)+(py-cy)*vy+(px-cx)*vx)/(vy^2+vx^2)
+
+t=(sqrt((r^2-px^2+2*cx*px-cx^2)*vy^2+((2*px-2*cx)*py-2*cy*px+2*cx*cy)*vx*vy+(r^2-py^2+2*cy*py-cy^2)*vx^2)+(cy-py)*vy+(cx-px)*vx)/(vy^2+vx^2)
+
+<=>
+
+sqrtArg = (pow2(r)-pow2(px)+2*cx*px-pow2(cx))*pow2(vy)+((2*px-2*cx)*py-2*cy*px+2*cx*cy)*vx*vy+(pow2(r)-pow2(py)+2*cy*py-pow2(cy))*pow2(vx);
+
+sqrtValue = sqrt(sqrtArg);
+
+t1 =-(sqrtValue +(py-cy)*vy+(px-cx)*vx)/(pow2(vy)+pow2(vx));
+
+t2 =(sqrtValue  +(cy-py)*vy+(cx-px)*vx)/(pow2(vy)+pow2(vx));
+

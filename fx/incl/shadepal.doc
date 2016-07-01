@@ -1,0 +1,39 @@
+description of 16 basecolors of shadepal are created (shadelin.pal + shadecos.pal)
+
+imagine the color spectrum as a volume of a cube of (unit-cube, V = 1.0)
+this cube is offset in a cartesian coordinate system with axes r, g and b
+so that one edge of the cube becomes the center of the coordinate system and
+the three adjacent edges are colinear with the three axes
+
+to get the most diversity of colors we can approximate with the palettes,
+i choose 12 basecolors which lie close to the planes that do not share
+the origin of the coordinate system (4 for each). I don't put them on the planes
+but rather all on a parallel plane, because that way we cover more colors with them -
+if they'd lie on the planes which are faces of the cube, they would be as bright as possible
+in r, g and/or b, which would prevent that they cover brighter colors with their bounding Sphere
+(the volume of their bounding Sphere being a representation of the spectrum of colors the palette entry covers).
+
+these should also have some spacing from the planes
+additionally, i choose (1.0, 0.0, 0.0), (0.0, 1.0, 0.0), (0.0, 0.0, 1.0), (1.0, 1.0, 1.0) as the four
+remaining basecolors (values in r, g, b, respectively)
+
+-> the twelve first basecolors: (spacing is the distance between the parallel plane and the plane which is a face of the cube)
+
+on a plane parallel to the gr-plane
+(0.25, 0.75, 1.0 - spacing)
+(2/3, 2/3, 1.0 - spacing)
+(1/3, 1/3, 1.0 - spacing)
+(0.75, 0.25, 1.0 - spacing)
+
+on a plane parallel to the gb-plane
+(1.0 - spacing, 0.25, 0.75)
+(1.0 - spacing, 2/3, 2/3)
+(1.0 - spacing, 0.75, 0.25)
+(1.0 - spacing, 1/3, 1/3)
+
+on a plane parallel to the br-plane
+(1/3, 1.0 - spacing, 1/3)
+(0.75, 1.0 - spacing, 0.25)
+(0.25, 1.0 - spacing, 0.75)
+(2/3, 1.0 - spacing, 2/3)
+

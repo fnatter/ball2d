@@ -1,0 +1,57 @@
+# This is derive syntax!!:
+#solve([([px1,py1] + t*[vx1,vy1] - ([px2,py2] + t*[vx2,vy2]))^2 = (r1+r2)^2], t);
+
+# This works for maxima:
+solve([(px2+t*vx2 - px1-t*vx1)^2 + (py2 + t*vy2 - py1-t*vy1)^2 = (r1+r2)^2], t);
+
+<=>
+
+t=-(sqrt((r2^2+2*r1*r2+r1^2-px2^2+2*px1*px2-px1^2)*vy2^2+(
+(-2*r2^2-4*r1*r2-2*r1^2+2*px2^2-4*px1*px2+2*px1^2)*vy1+((2*px2-2*px1)*py2+(2*px1-2*px2)*py1)*vx2+
+((2*px1-2*px2)*py2+(2*px2-2*px1)*py1)*vx1)*vy2+(r2^2+2*r1*r2+r1^2-px2^2+2*px1*px2-px1^2)*vy1^2+
+(((2*px1-2*px2)*py2+(2*px2-2*px1)*py1)*vx2+((2*px2-2*px1)*py2+(2*px1-2*px2)*py1)*vx1)*vy1+
+(r2^2+2*r1*r2+r1^2-py2^2+2*py1*py2-py1^2)*vx2^2+(-2*r2^2-4*r1*r2-2*r1^2+2*py2^2-4*py1*py2+2*py1^2)*
+vx1*vx2+(r2^2+2*r1*r2+r1^2-py2^2+2*py1*py2-py1^2)*vx1^2)+(py2-py1)*vy2+(py1-py2)*vy1+
+(px2-px1)*vx2+(px1-px2)*vx1)/(vy2^2-2*vy1*vy2+vy1^2+vx2^2-2*vx1*vx2+vx1^2),
+
+t=(sqrt(
+(r2^2+2*r1*r2+r1^2-px2^2+2*px1*px2-px1^2)*vy2^2+((-2*r2^2-4*r1*r2-2*r1^2+2*px2^2-4*px1*px2+2*px1^2)
+*vy1+((2*px2-2*px1)*py2+(2*px1-2*px2)*py1)*vx2+((2*px1-2*px2)*py2+(2*px2-2*px1)*py1)*vx1)*vy2+
+(r2^2+2*r1*r2+r1^2-px2^2+2*px1*px2-px1^2)*vy1^2+
+(((2*px1-2*px2)*py2+(2*px2-2*px1)*py1)*vx2+((2*px2-2*px1)*py2+(2*px1-2*px2)*py1)*vx1)*vy1+
+(r2^2+2*r1*r2+r1^2-py2^2+2*py1*py2-py1^2)*vx2^2+(-2*r2^2-4*r1*r2-2*r1^2+2*py2^2-4*py1*py2+2*py1^2)*
+vx1*vx2+(r2^2+2*r1*r2+r1^2-py2^2+2*py1*py2-py1^2)*vx1^2)+(py1-py2)*vy2+(py2-py1)*vy1+
+(px1-px2)*vx2+(px2-px1)*vx1)/(vy2^2-2*vy1*vy2+vy1^2+vx2^2-2*vx1*vx2+vx1^2)
+
+<=>
+
+t=-(sqrt((pow2(r2)+2*r1*r2+pow2(r1)-pow2(px2)+2*px1*px2-pow2(px1))*pow2(vy2)+(
+(-2*pow2(r2)-4*r1*r2-2*pow2(r1)+2*pow2(px2)-4*px1*px2+2*pow2(px1))*vy1+((2*px2-2*px1)*py2+(2*px1-2*px2)*py1)*vx2+
+((2*px1-2*px2)*py2+(2*px2-2*px1)*py1)*vx1)*vy2+(pow2(r2)+2*r1*r2+pow2(r1)-pow2(px2)+2*px1*px2-pow2(px1))*pow2(vy1)+
+(((2*px1-2*px2)*py2+(2*px2-2*px1)*py1)*vx2+((2*px2-2*px1)*py2+(2*px1-2*px2)*py1)*vx1)*vy1+
+(pow2(r2)+2*r1*r2+pow2(r1)-pow2(py2)+2*py1*py2-pow2(py1))*pow2(vx2)+(-2*pow2(r2)-4*r1*r2-2*pow2(r1)+2*pow2(py2)-4*py1*py2+2*pow2(py1))*
+vx1*vx2+(pow2(r2)+2*r1*r2+pow2(r1)-pow2(py2)+2*py1*py2-pow2(py1))*pow2(vx1))
++(py2-py1)*vy2+(py1-py2)*vy1+
+(px2-px1)*vx2+(px1-px2)*vx1)/(pow2(vy2)-2*vy1*vy2+pow2(vy1)+pow2(vx2)-2*vx1*vx2+pow2(vx1)),
+
+t=(sqrt(
+(pow2(r2)+2*r1*r2+pow2(r1)-pow2(px2)+2*px1*px2-pow2(px1))*pow2(vy2)+((-2*pow2(r2)-4*r1*r2-2*pow2(r1)+2*pow2(px2)-4*px1*px2+2*pow2(px1))
+*vy1+((2*px2-2*px1)*py2+(2*px1-2*px2)*py1)*vx2+((2*px1-2*px2)*py2+(2*px2-2*px1)*py1)*vx1)*vy2+
+(pow2(r2)+2*r1*r2+pow2(r1)-pow2(px2)+2*px1*px2-pow2(px1))*pow2(vy1)+
+(((2*px1-2*px2)*py2+(2*px2-2*px1)*py1)*vx2+((2*px2-2*px1)*py2+(2*px1-2*px2)*py1)*vx1)*vy1+
+(pow2(r2)+2*r1*r2+pow2(r1)-pow2(py2)+2*py1*py2-pow2(py1))*pow2(vx2)+(-2*pow2(r2)-4*r1*r2-2*pow2(r1)+2*pow2(py2)-4*py1*py2+2*pow2(py1))*
+vx1*vx2+(pow2(r2)+2*r1*r2+pow2(r1)-pow2(py2)+2*py1*py2-pow2(py1))*pow2(vx1))
++(py1-py2)*vy2+(py2-py1)*vy1+
+(px1-px2)*vx2+(px2-px1)*vx1)/(pow2(vy2)-2*vy1*vy2+pow2(vy1)+pow2(vx2)-2*vx1*vx2+pow2(vx1))
+
+<=>
+
+sqrtArg = (pow2(r2)+2*r1*r2+pow2(r1)-pow2(px2)+2*px1*px2-pow2(px1))*pow2(vy2)+((-2*pow2(r2)-4*r1*r2-2*pow2(r1)+2*pow2(px2)-4*px1*px2+2*pow2(px1))*vy1+((2*px2-2*px1)*py2+(2*px1-2*px2)*py1)*vx2+((2*px1-2*px2)*py2+(2*px2-2*px1)*py1)*vx1)*vy2+(pow2(r2)+2*r1*r2+pow2(r1)-pow2(px2)+2*px1*px2-pow2(px1))*pow2(vy1)+(((2*px1-2*px2)*py2+(2*px2-2*px1)*py1)*vx2+((2*px2-2*px1)*py2+(2*px1-2*px2)*py1)*vx1)*vy1+(pow2(r2)+2*r1*r2+pow2(r1)-pow2(py2)+2*py1*py2-pow2(py1))*pow2(vx2)+(-2*pow2(r2)-4*r1*r2-2*pow2(r1)+2*pow2(py2)-4*py1*py2+2*pow2(py1))*vx1*vx2+(pow2(r2)+2*r1*r2+pow2(r1)-pow2(py2)+2*py1*py2-pow2(py1))*pow2(vx1);
+
+sqrtValue = sqrt(sqrtArg);
+
+t1 = -(sqrtValue +(py2-py1)*vy2+(py1-py2)*vy1+
+(px2-px1)*vx2+(px1-px2)*vx1)/(pow2(vy2)-2*vy1*vy2+pow2(vy1)+pow2(vx2)-2*vx1*vx2+pow2(vx1)),
+
+t2 = (sqrtValue +(py1-py2)*vy2+(py2-py1)*vy1+
+(px1-px2)*vx2+(px2-px1)*vx1)/(pow2(vy2)-2*vy1*vy2+pow2(vy1)+pow2(vx2)-2*vx1*vx2+pow2(vx1))

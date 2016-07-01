@@ -1,0 +1,74 @@
+#ifndef __FUNCTION_H
+#define __FUNCTION_H
+
+#include <stdio.h> // "FILE"
+
+enum OperatorType
+{
+  OP_TIMES, OP_DIVIDE, OP_PLUS, OP_MINUS, OP_POWER, OP_UNARY_MINUS,
+  OP_SINE, OP_COSINE, OP_TANGENT, OP_COTANGENT, OP_ARCUS_SINE, OP_ARCUS_COSINE,
+  OP_ARCUS_TANGENT, OP_ARCUS_COTANGENT, OP_NATURAL_LOG, OP_LOGARITHM,
+  OP_ABSOLUTE_VALUE, OP_SIGN, OP_SQUARE_ROOT, TOKEN_VARIABLE_X, TOKEN_VARIABLE_Y,
+  CONSTANT_VALUE, OP_DONTKNOW
+};
+extern double VARIABLE_X, VARIABLE_Y;
+#define SMALL_NUMBER                      1.0E-22
+#define MAX_EXPR_LEN                      4096
+
+struct Knot; //fwd decl.
+
+struct Knot
+{
+  OperatorType OPtype; // if OPtype == OP_CONSTANT_VALUE, value is valid
+  double value;
+  Knot* Children[10];
+  Knot* Parent;
+};
+
+enum RECORD_ERROR_VAL
+{
+  EXPR_MISSING_OPEN, EXPR_MISSING_CLOSED, EXPR_FUNCTION_WO_PARENTH,
+  EXPR_LOG_MISSING_2ND_ARG, EXPR_OPERATOR_RIGHT_HAND_EXPR_MISSING,
+  EXPR_OPERATOR_LEFT_HAND_EXPR_MISSING, EXPR_EMPTY_EXPRESSION,
+  EXPR_UNKNOWN_FUNCTION, RECORD_NO_ERROR
+};
+
+enum DERIVE_ERROR_VAL
+{
+  DERIVE_FUNCTION_NOT_IMPLEMENTED, DERIVE_NO_ERROR
+};
+
+enum EVALUATE_ERROR_VAL
+{
+  EVALUATE_IS_ASYMPTOTE, EVALUATE_NOT_IN_D, EVALUATE_NO_ERROR
+};
+
+extern RECORD_ERROR_VAL record_Error; // used for record_expression(...)
+extern EVALUATE_ERROR_VAL evaluate_Error; // used for evaluate_expression(...)
+extern DERIVE_ERROR_VAL derive_Error; // used for derive_expression(...)
+
+#define IS_OPEN_PARENTH(x) ((x) == '(' || (x) == '[' || (x) == '{')
+#define IS_CLOSED_PARENTH(x) ((x) == ')' || (x) == ']' || (x) == '}')
+
+int getOPPrecedence(OperatorType type);
+char getOPchar(OperatorType type);
+OperatorType getOPtype(char Char);
+OperatorType getmcOPtype(char* expr, int* len); // mc = multi-character
+bool isCommutative(OperatorType type);
+bool isBinary(OperatorType type);
+void getmcOPString(OperatorType op, char* str);
+void freeKnot(Knot* knot);
+void knot2expr(Knot* cknot, char* expr, int nesting_level = 0); // note that expr must have enough memory allocated!
+void simplify_expression(Knot* base);
+bool simplify_expr(Knot* cknot);
+void derive_expression(Knot* baseknot, Knot* derivative_knot);
+double evaluate_expression(Knot* current_knot);
+void record_expression(char* expr, Knot* current_knot);
+void copy_expression(Knot* source, Knot* dest);
+void set_parse_tree_parents(Knot* base);
+bool depends_on_x(Knot* cknot);
+bool depends_on_x_or_y(Knot* cknot);
+void make_exponent_explicit(char* expr);
+void export_expression_latex(Knot* base, FILE* texf);
+
+#endif

@@ -1,0 +1,73 @@
+<HTML>
+<head><title>Makebm V10^(-7) and makeall</title></head>
+
+<h2>Makebm</h2>
+
+<table bgcolor = "red">
+<tr>
+<td>If you are running Windows, please start these programs only in <b>fullscreen-mode</b>
+(Alt+Enter at the DOS-Prompt).</td>
+</tr>
+</table>
+
+<ul>
+<li>cwsdpmi is the dpmi host, you need it for makebm to run
+<li>you need a VesaBiosExtension (VBE) 2.0 because I use LFB
+<li>if you want to run it with Win95/98, configure a .pif-file for <em>full-screen-mode</em>
+<li>bugs: <em>countless</em>: sometimes can't enter 0's (try space instead), many, many more... (but usually only 'cosmetic')
+<li>load sprites: F1, save sprites: F2, load bitmaps (8/24 bit windows DIB's):F3, save bitmaps (8bit windows DIB's): F4
+(a smile warns you from deleting files/ trying to load nonexistent ones)
+<li>f: find nearest color, enter 6 or 8bit r/g/b values, toggle 8/6bit with space
+<li>w: change bitmap size, if a bitmap is loaded, it will be scaled, 
+<li>P: hold P and: press L (load 6bit-palette)/ press S (save )/ press right shift: switch palette (xpos 0.? uses linear shading pal (shadelin.pal) or shadecos.pal (cosine), which you can change
+in fx3d.cfg)
+
+<li>S: scale proportionally (use +/-)
+<li>V: enter whole-screen-mode (useful for selecting viewport and looking at results)
+      <ul>
+      <li>press s to toggle 'squared' mode (will align viewport so that one cell is always nxn size)
+      <li>note that there is a maximum viewport size (press PAD3 to set it)
+      <li>press PAD5 to select viewport size = 1/4*bitmap size (viewport width = 1/2 * bitmap width, viewport height = 1/2 * bitmap height)
+      <li>press arrow keys to move viewport around
+      <li>press rshift + arrow keys to change viewport size
+      <li>enter = exit mode
+      <li>escape = exit mode without saving
+      </ul>
+<li>C: counts (different) colors used (completely obsolete, what the hell)
+<li>I: invert colors, don't do it, it messes up the colors
+<li>R: toggle raster (at set uses drawing color for color of raster)
+<li>use pgdown/pgup pad5 (center)... arrows to move viewport around or move around in viewport
+, hold rshift to move around one-by-one (pixel)
+<li>use +/- to change drawing-color (see white line indicator)
+<li>SPACE will toggle color (drawcolor/0), ALT is fast-delete (drawing 0) and ctrl is fast-draw (drawing drawcolor)
+</ul>
+
+<h2>Makeall</h2>
+
+<p>
+You can use this tool if you've got a bunch of windows bitmaps (24bit or 8bit,
+though 24bit is best) that you want to convert to (8bit-) sprites (.spr),
+for use with other programs like textures in xpos. You can just specify
+a line of input DIB's and makeall will convert each dib to a sprite, saving
+the sprite with the same name and the extension .spr.
+But there is a problem with dos command lines, they are limited to (I think) 126
+characters, and If you need more that that (and you're likely to), you need to
+write the names to a file, and then pass only <code>@the_file</code> to makeall,
+it will then read in the file without limits. With the cygwin tools you can create
+such a file using <code>echo *.bmp -usepal shadecos.pal > args</code> and then
+use it with: <code>makeall @args</code>.<br>
+Here are some options for makeall:
+<ul>
+<li>-prompt, prompts you before overwriting a file
+<li>-usepal <6bit(vga)-palette>, uses this palette instead of univ.pal
+</ul>
+
+
+<p>
+I used <a href = "http://www.ndh.net/home/natter/djgpp.htm">DJGPP</a>, a <em>free</em> 32bit-PM development environment
+for (extended) DOS applications, to create this program.<br>
+Take a look at <a href = "http://www.ndh.net/home/natter/">my homepage</a>.
+</p>
+
+</BODY>
+</HTML>

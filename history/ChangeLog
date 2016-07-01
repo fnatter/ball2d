@@ -1,0 +1,66 @@
+2011-10-30 Felix Natter <fnatter@gmx.net>
+	* v1.1/ball2d.c: add polygonal obstacles
+
+2011-08-10 Felix Natter <fnatter@gmx.net>
+	* v1.0beta2/ball2d.c: re-implement -zombies
+
+2011-08-06 Felix Natter <fnatter@gmx.net>
+	* v1.0beta1/ball2d.c: add obstacle collisions, now all collisions
+          seem to work, feature complete :-)
+	* v1.0beta1/ball2d_(overlap|lookahead).c: fix findObstacleIntersection()
+
+2011-08-06 Felix Natter <fnatter@gmx.net>
+	* rename ball2d.c to ball2d_overlap.c (iterative variant with
+	  ball-overlap)
+	* keep ball2d_lookahead.c (iterative variant without ball-overlap)
+	* rename ball2d_pi.c to ball2d.c (path intersection variant)
+	* ball2d.c is @v1.0beta1 (now main branch!)
+
+2011-08-06 Felix Natter <fnatter@gmx.net>
+	ball2d_pi-v0.2.c
+	* Lagging fixed by:
+	  1. measuring the time needed for Balls_move and subtracting that
+	     from the screenhack delay!
+	  2. making sure that all balls for moved for delta_t=SINGLE_TIME_STEP,
+	     even if a collision occurs in between!
+
+2011-08-04 Felix Natter <fnatter@gmx.net>
+	ball2d_pi-v0.1.c:
+	* first version of "path intersection" (analytic) approach
+	* supports (perfect :-) ball collisions and wall hits
+	* Lagging :-(
+	* needs optimization: don't compute all path intersections!
+
+2011-07-31 Felix Natter <fnatter@gmx.net>
+	v0.11/*
+	* Balls_findPathIntersection() now uses an equation derived by
+	  maxima (GPL!), but the version in v0.10 derived by "Derive"
+	  is more efficient (less operations) :-(
+	* -showFutureCollisions now honors walls and obstacles, but
+	  (still) seems to be a bit buggy (even without obstacles)
+
+2011-07-28 Felix Natter <fnatter@gmx.net>
+	ball2d-v0.10.c, ball2d_lookahead-v0.10.c
+	* show the point where the two balls will touch with a cross
+	* still the problem is that -showFutureCollisons does not honor
+	  walls and obstacles!
+
+2011-07-27 Felix Natter <fnatter@gmx.net>
+	ball2d-v0.9.c, ball2d_lookahead-v0.9.c
+	* revive the lookahead version (check for future ball collisions to
+	  avoid overlap). Cleaner because it doesn't require "move apart"
+	* add Feature -showFutureCollisions which highlights the two balls that
+	  will next collide
+
+2011-07-24 Felix Natter <fnatter@gmx.net>
+	ball2d-v0.8.c: no more collision bugs :-)
+	* Ball-Ball-Collisions: do not reset way_to_go after collisions
+	  (not necessary anymore because cball->EOFiteration = False
+	   is NOT done when the collision was aborted because there
+	   was no other event between the last collision with the same
+	   ball)
+	* Ball-Obstacle-Collisions: do not use the 45° virtual wall 
+	  approximation any more. Instead, create a virtual wall
+	  which is normal to the vector between the obstacle corner
+	  and the center of the ball
+

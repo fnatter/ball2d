@@ -1,0 +1,34 @@
+21,22c21,22
+< mansuffix	= 6
+< manNdir		= $(mandir)/man$(mansuffix)
+---
+> mansuffix	= 6x
+> manNdir		= $(mandir)/man6
+86c86
+< SRCS		= attraction.c blitspin.c bouboule.c braid.c bubbles.c \
+---
+> SRCS		= attraction.c ball2d.c blitspin.c bouboule.c braid.c bubbles.c \
+125c125
+< OBJS		= attraction.o blitspin.o bouboule.o braid.o bubbles.o \
+---
+> OBJS		= attraction.o ball2d.o blitspin.o bouboule.o braid.o bubbles.o \
+156c156
+< EXES		= attraction blitspin bouboule braid decayscreen deco \
+---
+> EXES		= attraction ball2d blitspin bouboule braid decayscreen deco \
+260c260
+< all: $(EXES) $(RETIRED_EXES)
+---
+> all: $(EXES)
+558a559,561
+> ball2d:	ball2d.o	$(HACK_OBJS) $(COL) $(SPL) $(DBE)
+> 	$(CC_HACK) -o $@ $@.o	$(HACK_OBJS) $(COL) $(SPL) $(DBE) $(HACK_LIBS)
+> 
+596c599
+< 	$(CC_HACK) -o $@ $@.o	$(HACK_OBJS) $(ERASE) $(LOGO) $(HACK_LIBS)
+---
+> 	$(CC_HACK) -o $@ $@.o	$(HACK_OBJS) $(ERASE) $(LOGO) $(HACK_LIBS) $(XPM_LIBS)
+1093c1096
+< barcode.o: $(UTILS_SRC)/grabscreen.h
+---
+> Barcode.o: $(UTILS_SRC)/grabscreen.h
